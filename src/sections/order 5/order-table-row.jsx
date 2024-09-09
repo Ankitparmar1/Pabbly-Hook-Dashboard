@@ -300,10 +300,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 onClose={handleCloseSnackbar}
                 message="This is an error Alert."
                 anchorOrigin={{
-                  vertical: '10px',
+                  vertical: 'top',
                   horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
                 }}
-                sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
               >
                 <Alert onClose={handleCloseSnackbar} severity="success">
                   Connection successfully setup.
