@@ -18,7 +18,18 @@ import { useBoolean } from 'src/hooks/use-boolean';
 
 // import { fDate, fTime } from 'src/utils/format-time';
 
-import { Grid, Alert, AppBar, Divider, Tooltip, Toolbar, Snackbar, TextField, Typography, IconButton, } from '@mui/material';
+import {
+  Grid,
+  Alert,
+  AppBar,
+  Divider,
+  Tooltip,
+  Toolbar,
+  Snackbar,
+  TextField,
+  Typography,
+  IconButton,
+} from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 import { ConfirmDialog } from 'src/components/custom-dialog';
@@ -38,14 +49,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
     setOpenSnackbar(false);
   };
   const evtItems = [
-    { id: 1, text: "req_66c87b54a2b7dc2c1740d639", label: "req_66c87b54a2b7dc2c1740d639" },
+    { id: 1, text: 'req_66c87b54a2b7dc2c1740d639', label: 'req_66c87b54a2b7dc2c1740d639' },
 
     // Add more items as needed
   ];
   // Function to copy text to clipboard
-  const handleCopy = (text) => {
-
-  };
+  const handleCopy = (text) => { };
   const confirm = useBoolean();
   const collapse = useBoolean();
   const popover = usePopover();
@@ -101,10 +110,16 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Typography fontSize={16} color='283746'>{item.label}</Typography>
-                <Tooltip title="Copy Text">
-                  <IconButton color="primary" onClick={() => handleCopy(item.text)}>
-                    <Iconify color="#919eab" width={16} icon="solar:copy-bold" />
+                <Typography fontSize={16} color="283746">
+                  {item.label}
+                </Typography>
+                <Tooltip title="Copy Text " arrow placement="bottom">
+                  <IconButton
+                    edge="end"
+                    sx={{ color: 'text.disabled' }}
+                    onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
+                  >
+                    <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
               </Box>
@@ -116,9 +131,10 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-      <TableCell align="right" >
+      <TableCell align="right">
         <Button
-          size='small' onClick={handleOpenDrawer}
+          size="small"
+          onClick={handleOpenDrawer}
           variant="soft"
           color={
             (row.status === 'Accepted' && 'success') ||
@@ -219,7 +235,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           <Button variant="contained" color="error" onClick={onDeleteRow}>
             Delete
           </Button>
-
         }
       />
       <Drawer
@@ -276,19 +291,20 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               <Typography variant="body2">Status</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-              <Button onClick={handleOpenSnackbar} variant="contained" color="success" size='small'>
+              <Button onClick={handleOpenSnackbar} variant="contained" color="success" size="small">
                 Accepted
               </Button>
               <Snackbar
-
                 open={openSnackbar}
                 autoHideDuration={4000}
                 onClose={handleCloseSnackbar}
                 message="This is an error Alert."
                 anchorOrigin={{
+
                   vertical: 'top',
                   horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
-                }}
+                }}// Add zIndex here
+
               >
                 <Alert onClose={handleCloseSnackbar} severity="success">
                   Connection successfully setup.
@@ -330,17 +346,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 variant="outlined"
                 size="small"
               />
-            </Grid> <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
+            </Grid>{' '}
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
               <Typography variant="body2">Method</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-              <TextField
-                disabled
-                value="Get"
-                fullWidth
-                variant="outlined"
-                size="small"
-              />
+              <TextField disabled value="Get" fullWidth variant="outlined" size="small" />
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
               <Typography variant="body2">Body</Typography>
@@ -392,7 +403,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Grid>
         </Box>
         {/* </Card> */}
-      </Drawer>
+      </Drawer >
     </>
   );
 }
