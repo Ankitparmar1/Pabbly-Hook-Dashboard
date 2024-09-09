@@ -159,7 +159,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
           <Stack spacing={2} direction="row" alignItems="right">
             <IconButton
-              sx={{ mt: -0.2, ml: 0 }}
+              sx={{ mt: 2, ml: 0 }}
               color={popover.open ? 'inherit' : 'default'}
               onClick={popover.onOpen}
             >
