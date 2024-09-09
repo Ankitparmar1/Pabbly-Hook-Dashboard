@@ -107,7 +107,7 @@ export function FormDialog() {
           <Button onClick={dialog.onFalse} variant="outlined" color="inherit">
             Cancel
           </Button>
-          <Button onClick={handleOpenSnackbar} variant="contained" >
+          <Button onClick={handleOpenSnackbar} variant="contained">
             Create
           </Button>
           <Snackbar
@@ -117,13 +117,12 @@ export function FormDialog() {
             onClose={handleCloseSnackbar}
             message="This is an error Alert."
             anchorOrigin={{
-              vertical: '10px',
+              vertical: 'top',
               horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
             }}
-            sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
           >
             <Alert onClose={handleCloseSnackbar} severity="success">
-              Connection connection successfully .
+              Connection successfully setup.
             </Alert>
           </Snackbar>
         </DialogActions>

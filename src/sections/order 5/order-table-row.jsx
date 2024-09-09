@@ -301,12 +301,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 message="This is an error Alert."
                 anchorOrigin={{
                   vertical: '10px',
-                  horizontal: 'center', // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
+                  horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
                 }}
-                sx={{ position: 'fixed', top: -940 }} // Add zIndex here
+                sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
               >
                 <Alert onClose={handleCloseSnackbar} severity="success">
-                  Status accepted successfully.
+                  Connection successfully setup.
                 </Alert>
               </Snackbar>
             </Grid>

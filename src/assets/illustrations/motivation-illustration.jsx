@@ -29,7 +29,7 @@ function MotivationIllustration({ hideBackground, sx, ...other }) {
         sx={{ padding: '0px', width: '100%', height: '180px' }}
       >
         <img
-          src={`${CONFIG.site.basePath}/public/assets/background/hookpabbly.png`}
+          src={`${CONFIG.site.basePath}/public/assets/background/Hook01.webp`}
           alt="Background"
           height="180"
           width="740"
