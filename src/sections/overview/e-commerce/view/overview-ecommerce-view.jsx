@@ -886,7 +886,7 @@ export function OverviewEcommerceView() {
                     <Button onClick={handleClose} variant="outlined" color="inherit">
                       Cancel
                     </Button>
-                    <Button onClick={handleOpenSnackbar} variant="outlined" color="inherit">
+                    <Button onClick={handleOpenSnackbar} variant="contained" color="inherit">
                       Create
                     </Button>
                     <Snackbar
@@ -896,10 +896,9 @@ export function OverviewEcommerceView() {
                       onClose={handleCloseSnackbar}
                       message="This is an error Alert."
                       anchorOrigin={{
-                        vertical: '10px',
+                        vertical: 'top',
                         horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
                       }}
-                      sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
                     >
                       <Alert onClose={handleCloseSnackbar} severity="success">
                         Connection successfully setup.
@@ -909,25 +908,9 @@ export function OverviewEcommerceView() {
                 </Dialog>
               </>
 
-              <Button onClick={handleOpenSnackbar} variant="outlined" color="inherit">
+              <Button onClick={handleClose} variant="outlined" color="inherit">
                 Cancel
               </Button>
-              <Snackbar
-
-                open={openSnackbar}
-                autoHideDuration={4000}
-                onClose={handleCloseSnackbar}
-                message="This is an error Alert."
-                anchorOrigin={{
-                  vertical: '10px',
-                  horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
-                }}
-                sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
-              >
-                <Alert onClose={handleCloseSnackbar} severity="error">
-                  Folder is name required
-                </Alert>
-              </Snackbar>
             </DialogContent>
           </Card>
         </Grid>
