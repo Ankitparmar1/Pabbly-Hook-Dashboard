@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import { alpha as hexAlpha } from '@mui/material/styles';
 
-import { paths } from 'src/routes/paths';
+// import { paths } from 'src/routes/paths';
 
 import { CONFIG } from 'src/config-global';
 import { varAlpha, bgGradient } from 'src/theme/styles';
@@ -49,7 +49,7 @@ export function NavUpgrade({ sx, ...other }) {
           <Typography
             variant="subtitle2"
             noWrap
-            sx={{ color: 'var(--layout-nav-text-primary-color)' }}
+            sx={{ color: 'var(--palette-grey-50)' }}
           >
             {user?.displayName}
           </Typography>
@@ -63,7 +63,7 @@ export function NavUpgrade({ sx, ...other }) {
           </Typography>
         </Stack>
 
-        <Button variant="contained" href={paths.minimalStore} target="_blank" rel="noopener">
+        <Button variant="contained" href="https://www.pabbly.com/connect/inr/" target="_blank" rel="noopener">
           Upgrade to Pro
         </Button>
       </Stack>
@@ -79,7 +79,6 @@ export function UpgradeBlock({ sx, ...other }) {
       sx={{
         ...bgGradient({
           color: `135deg, ${hexAlpha('#F7BB95', 0.92)}, ${hexAlpha('#5B2FF3', 0.92)}`,
-          imgUrl: `${CONFIG.site.basePath}assets/background/background-6.webp`,
         }),
         px: 3,
         py: 4,
@@ -132,7 +131,7 @@ export function UpgradeBlock({ sx, ...other }) {
           Power up Productivity!
         </Box>
 
-        <Button variant="contained" size="small" color="warning">
+        <Button variant="contained" href="https://www.pabbly.com/connect/inr/" target="_blank" size="small" color="warning">
           Upgrade to Pro
         </Button>
       </Stack>

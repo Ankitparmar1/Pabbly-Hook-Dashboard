@@ -95,7 +95,7 @@ const StyledTreeItem = styled((props) => {
             >
               {' '}
               <Iconify sx={{ mr: 1 }} color="#ff5630" icon="solar:trash-bin-trash-bold" />
-              &nbsp;Delete
+              Delete
             </MenuItem>
           </Popover>
         </div>

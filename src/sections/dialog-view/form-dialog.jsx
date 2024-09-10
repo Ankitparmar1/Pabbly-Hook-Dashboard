@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { Alert } from '@mui/material';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import Snackbar from '@mui/material/Snackbar';
+import { Alert, MenuItem } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -13,8 +13,26 @@ import DialogContent from '@mui/material/DialogContent';
 import { useBoolean } from 'src/hooks/use-boolean';
 
 
-
 // ----------------------------------------------------------------------
+
+const selectfolder = [
+  {
+    value: 'USD',
+    label: 'Main',
+  },
+  {
+    value: 'EUR',
+    label: 'Hello',
+  },
+  {
+    value: 'BTC',
+    label: 'Subtree with children',
+  },
+  {
+    value: 'JPY',
+    label: 'world',
+  },
+];
 
 export function FormDialog() {
   const [openSnackbar, setOpenSnackbar] = React.useState(false);
@@ -82,21 +100,21 @@ export function FormDialog() {
           <Typography sx={{ mt: 1 }}>Select Folder</Typography>
 
           <TextField
-            autoFocus
-            fullWidth
-            type="email"
-            margin="dense"
-            variant="outlined"
-            label="Home"
-            helperText={
-              <>
-                Select the folder or subfolder where you want to create the connection.{' '}
-                <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}>
-                  Learn more
-                </a>
-              </>
-            }
-          />
+                id="outlined-select-currency"
+                select
+                fullWidth
+                label="Select"
+                margin="dense"
+                defaultValue="USD"
+                helperText={ <> Select the folder or subfolder where you want to create the connection.{' '} 
+                <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}> Learn more </a> </> }
+              >
+                {selectfolder.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </TextField>
 
           {/* <Typography sx={{ mb:3 ,color:'text.secondary',fontSize:'13px'}}>
           Select the folder or subfolder where you want to create the connection.

@@ -48,9 +48,9 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'Transformation Name' },
-  { id: 'name', label: 'TRS ID' },
-  { id: 'totalAmount', label: 'Transformation Code', align: 'right' },
+  { id: 'orderNumber', label: 'TRANSFORMATION NAME ' },
+  { id: 'name', label: 'TRANSFORMATION ID' },
+  { id: 'totalAmount', label: 'TRANSFORMATION CODE', align: 'right' },
   // { id: 'status', label: 'Action' },
   // { id: '', label: '', align: 'right' }, // Add an empty column for right alignment
 ];

@@ -227,7 +227,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         onClose={handleCloseDrawer}
         anchor="right"
         slotProps={{ backdrop: { invisible: true } }}
-        PaperProps={{ sx: { width: 850 } }}
+        PaperProps={{  sx: {
+      width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
+      '@media (max-width: 300px)': {
+        padding: '16px',
+      },
+    }, }}
       >
         {/* <Card component="ul" position="relative" float="left"> */}
         <AppBar
@@ -237,12 +242,22 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           display="flex"
         >
           <Toolbar>
-            <IconButton sx={{ ml: 92 }} color="inherit" edge="start" onClick={handleCloseDrawer}>
+            <IconButton
+              color="inherit"
+              edge="start"
+              sx={{
+                position: 'absolute',
+                top: 12, // Adjust top position as needed
+                right: 28, // Adjust right position as needed
+              }}
+              onClick={handleCloseDrawer}
+            >
               <Iconify icon="mingcute:close-line" />
             </IconButton>
+            {/* You can uncomment this Button if you need a Save button */}
             {/* <Button autoFocus color="inherit" variant="contained" onClick={dialog.onFalse}>
-              Save
-            </Button> */}
+            Save
+          </Button> */}
           </Toolbar>
           <Typography
             sx={{

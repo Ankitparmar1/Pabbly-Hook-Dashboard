@@ -136,7 +136,7 @@ export function Searchbar({ data: navItems = [], sx, ...other }) {
           display: { xs: 'none', sm: 'inline-flex' },
         }}
       >
-        Search here Total requests, Free Task Consumed...
+        Search here for Connections, Requests, Events, or Tasks...
       </Label>
     </Box>
   );
@@ -162,7 +162,7 @@ export function Searchbar({ data: navItems = [], sx, ...other }) {
           <InputBase
             fullWidth
             autoFocus
-            placeholder="Search..."
+            placeholder="Search for dashboards or modules..."
             value={searchQuery}
             onChange={handleSearch}
             startAdornment={
@@ -171,7 +171,7 @@ export function Searchbar({ data: navItems = [], sx, ...other }) {
               </InputAdornment>
             }
             endAdornment={<Label sx={{ letterSpacing: 1, color: 'text.secondary' }}>esc</Label>}
-            inputProps={{ sx: { typography: 'h6' } }}
+            inputProps={{ sx: { fontSize: '16px' } }}
           />
         </Box>
 

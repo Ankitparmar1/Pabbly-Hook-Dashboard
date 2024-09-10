@@ -211,7 +211,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         onClose={handleCloseDrawer}
         anchor="right"
         slotProps={{ backdrop: { invisible: true } }}
-        PaperProps={{ sx: { width: 850 } }}
+        PaperProps={{  sx: {
+      width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
+      '@media (max-width: 300px)': {
+        padding: '16px',
+      },
+    }, }}
       >
         {/* <Card component="ul" position="relative" float="left"> */}
         <AppBar

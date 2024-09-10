@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import { Tooltip } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 
@@ -19,11 +18,9 @@ export function CourseWidgetSummary({ sx, icon, title, total, color = 'warning',
     <Card sx={{ py: 3, pl: 3, pr: 2.5, ...sx }} {...other}>
       <Box sx={{ flexGrow: 1 }}>
         <Box sx={{ typography: 'h3' }}>{fNumber(total)}</Box>
-        <Tooltip title="Start building a new connection." arrow placement='bottom'>
           <Typography noWrap variant="subtitle2" component="div" sx={{ color: 'text.secondary' }}>
             {title}
           </Typography>
-        </Tooltip>
       </Box>
 
       <SvgColor

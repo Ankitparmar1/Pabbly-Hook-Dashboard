@@ -32,7 +32,12 @@ export function FullScreenDialog() {
       </Button>
 
       <Drawer
-        PaperProps={{ sx: { width: 850 } }}
+        PaperProps={{sx: {
+      width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
+      '@media (max-width: 300px)': {
+        padding: '16px',
+      },
+    } }}
         anchor="right"
         open={dialog.value}
         onClose={dialog.onFalse}
@@ -48,16 +53,23 @@ export function FullScreenDialog() {
             display="flex"
           >
             <Toolbar>
-              <IconButton sx={{ ml: 91 }} color="inherit" edge="start" onClick={dialog.onFalse}>
-                <Iconify icon="mingcute:close-line" />
-              </IconButton>
-              {/* <IconButton color="inherit" edge="start" onClick={dialog.onFalse}>
+            <IconButton
+              color="inherit"
+              edge="start"
+              sx={{
+                position: 'absolute',
+                top: 12, // Adjust top position as needed
+                right: 28, // Adjust right position as needed
+              }}
+              onClick={dialog.onFalse}
+            >
               <Iconify icon="mingcute:close-line" />
-            </IconButton> */}
-              {/* <Button autoFocus color="inherit" variant="contained" onClick={dialog.onFalse}>
-              Save
-            </Button> */}
-            </Toolbar>
+            </IconButton>
+            {/* You can uncomment this Button if you need a Save button */}
+            {/* <Button autoFocus color="inherit" variant="contained" onClick={dialog.onFalse}>
+            Save
+          </Button> */}
+          </Toolbar>
             <Typography
               sx={{
                 mt: -6.5,
