@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 // import ListItemText from '@mui/material/ListItemText';
 // import ListItemButton from '@mui/material/ListItemButton';
-import { Box, Card, Grid, Drawer, Tooltip, Divider, TextField, InputAdornment } from '@mui/material';
+import { Box, Card, Grid, Drawer, Tooltip, Divider, TextField } from '@mui/material';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
@@ -43,10 +43,8 @@ export function FullScreenDialog() {
         onClose={dialog.onFalse}
         TransitionComponent={Transition}
       >
-
-        <Card component="ul" position="relative" float="left" >
+        <Card component="ul" position="relative" float="left">
           <AppBar
-
             sx={{ bgcolor: '#fff', padding: 2 }}
             position="relative"
             color="default"
@@ -86,22 +84,35 @@ export function FullScreenDialog() {
               sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
             >
               Request:- req_86d8c060c2a54528995b0215a0c8592
-              <Tooltip title="Click here to copy event_id" arrow placement='top'> <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-                <Iconify width={18} icon="solar:copy-bold" />
-              </IconButton></Tooltip>
+              <Tooltip title="Copy Text " arrow placement="bottom">
+                <IconButton
+                  edge="end"
+                  sx={{ color: 'text.disabled' }}
+                  onClick={() =>
+                    navigator.clipboard.writeText('req_86d8c060c2a54528995b0215a0c8592')
+                  }
+                >
+                  <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
+                </IconButton>
+              </Tooltip>
             </Typography>
             <Typography
               sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
             >
               Events:- evt_66c87b54a2b7dc2c1740d639
-              <Tooltip title="Click here to copy event_id" arrow placement='top'> <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-                <Iconify width={18} icon="solar:copy-bold" />
-              </IconButton></Tooltip>
-
+              <Tooltip title="Copy Text " arrow placement="bottom">
+                <IconButton
+                  edge="end"
+                  sx={{ color: 'text.disabled' }}
+                  onClick={() => navigator.clipboard.writeText('evt_66c87b54a2b7dc2c1740d639')}
+                >
+                  <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
+                </IconButton>
+              </Tooltip>
             </Typography>
           </AppBar>
           <Divider />
-          <Box sx={{ width: '90%', mt: 5, ml: 5, bgcolor: '#fff', padding: 2, }}>
+          <Box sx={{ width: '90%', mt: 5, ml: 5, bgcolor: '#fff', padding: 2 }}>
             <Typography variant="h6" gutterBottom>
               Events History
             </Typography>
@@ -111,7 +122,10 @@ export function FullScreenDialog() {
                 <Typography variant="body2">Status</Typography>
               </Grid>
               <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-                <Button variant="contained" color='success' size='small' > Accepted</Button>
+                <Button variant="contained" color="success" size="small">
+                  {' '}
+                  Accepted
+                </Button>
               </Grid>
               <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Typography variant="body2">Source</Typography>
@@ -129,13 +143,7 @@ export function FullScreenDialog() {
                 <Typography variant="body2">Content length</Typography>
               </Grid>
               <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-                <TextField
-                  disabled
-                  value="74"
-                  fullWidth
-                  variant="outlined"
-                  size="small"
-                />
+                <TextField disabled value="74" fullWidth variant="outlined" size="small" />
               </Grid>
               <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Typography variant="body2"> Content Type</Typography>
@@ -153,20 +161,22 @@ export function FullScreenDialog() {
                 <Typography variant="body2">Method</Typography>
               </Grid>
               <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-                <TextField
-                  disabled
-                  value="Get"
-                  fullWidth
-                  variant="outlined"
-                  size="small"
-                />
+                <TextField disabled value="Get" fullWidth variant="outlined" size="small" />
               </Grid>
               <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Typography variant="body2">Body</Typography>
               </Grid>
               <Grid item xs={12} sm={8} md={15} lg={10} xl={10}>
                 <Grid item xs={12} sm={8} md={15} lg={10} xl={10}>
-                  <Box sx={{ position: 'relative' }}>
+                  <Box
+                    sx={{
+                      position: 'relative',
+                      maxHeight: 400,
+                      // overflowY: 'auto',
+                      // border: '1px solid #ccc',
+                      borderRadius: 2,
+                    }}
+                  >
                     <TextField
                       InputProps={{
                         endAdornment: (
@@ -174,12 +184,51 @@ export function FullScreenDialog() {
                             edge="end"
                             sx={{
                               position: 'absolute',
-                              top: 12, // Adjust top position as needed
-                              right: 35, // Adjust right position as needed
+                              top: 6, // Adjust as needed
+                              right: 40, // Adjust as needed
                               color: 'text.disabled',
                             }}
+                            onClick={() =>
+                              navigator.clipboard.writeText((request, context) => {
+                                // Initialize a counter
+                                let itemCounter = 0;
+                                // Process a list of items
+                                request.payload.items = request.payload.items || [];
+                                request.payload.items.forEach((item) => {
+                                  if (item.status === 'active') {
+                                    itemCounter += 1; // Avoiding ++ operator
+                                    item.updated_at = new Date().toISOString();
+                                  } else {
+                                    item.status = 'inactive';
+                                  }
+                                });
+
+                                // Add a summary field
+                                request.payload.summary = {
+                                  activeItemCount: itemCounter,
+                                  totalItems: request.payload.items.length,
+                                };
+
+                                // Add a new header
+                                request.headers['X-Item-Count'] = itemCounter.toString();
+
+                                // Process query parameters
+                                request.queryParams.processedAt = new Date().toISOString();
+
+                                // Error handling for missing fields
+                                if (!request.payload.items.length) {
+                                  throw new Error('No items to process');
+                                }
+
+                                return request;
+                              })
+                            }
                           >
-                            <Iconify width={18} icon="solar:copy-bold" />
+                            <Tooltip title="Copy Text " arrow placement="bottom">
+                              <div>
+                                <Iconify width={17} icon="solar:copy-bold" />
+                              </div>
+                            </Tooltip>
                           </IconButton>
                         ),
                       }}
@@ -226,7 +275,7 @@ export function FullScreenDialog() {
                         width: '120%', // Adjust width as needed
                         '& .MuiInputBase-root': {
                           fontSize: '14px', // Adjust font size as needed
-                          height: 'auto',  // Auto height
+                          height: 'auto', // Auto height
                           maxHeight: '500px', // Maximum height for the input box
                         },
                       }}
@@ -246,17 +295,18 @@ export function FullScreenDialog() {
                   size="small"
                   InputProps={{
                     endAdornment: (
-                      <Tooltip title="Click here to copy event_id" arrow placement='top'>
-                        <InputAdornment position="end">
-                          <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-                            <Iconify width={18} icon="solar:copy-bold" />
-                          </IconButton>
-                        </InputAdornment>
+                      <Tooltip title="Copy Text " arrow placement="bottom">
+                        <IconButton
+                          edge="end"
+                          sx={{ color: 'text.disabled' }}
+                          onClick={() => navigator.clipboard.writeText('NA')}
+                        >
+                          <Iconify sx={{ mt: -0.2 }} width={15} icon="solar:copy-bold" />
+                        </IconButton>
                       </Tooltip>
                     ),
                   }}
                 />
-
               </Grid>
             </Grid>
           </Box>

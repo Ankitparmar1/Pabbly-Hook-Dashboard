@@ -134,10 +134,7 @@ export function OrderListView() {
 
   return (
     <>
-      <DashboardContent
-        maxWidth="xl"
-        sx={{ px: { xs: 3.2, sm: 3, lg: 8, xl: 15 } }}
-      >
+      <DashboardContent maxWidth="xl" sx={{ px: { xs: 3.2, sm: 3, lg: 8, xl: 15 } }}>
         <Card>
           <OrderTableToolbar
             filters={filters}
@@ -156,6 +153,7 @@ export function OrderListView() {
 
           <Box sx={{ position: 'relative', width: '102%' }}>
             <TableSelectedAction
+              sx={{ width: '98%' }}
               dense={table.dense}
               numSelected={table.selected.length}
               rowCount={dataFiltered.length}

@@ -26,7 +26,6 @@ import {
 } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { MotivationIllustration } from 'src/assets/illustrations';
 
 import { OrderListView } from 'src/sections/order/view';
 
@@ -35,6 +34,8 @@ import { useMockedUser } from 'src/auth/hooks';
 
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+
+import { MotivationIllustration } from 'src/assets/illustrations';
 
 import { Iconify } from 'src/components/iconify';
 
@@ -332,9 +333,11 @@ export function OverviewEcommerceView() {
                 >
                   <div>Trash(10)</div>
                 </Tooltip>
+                <Tooltip title="Clear trash." arrow placement='top'>
                 <IconButton edge="end">
                   <Iconify icon="solar:trash-bin-trash-bold" />
                 </IconButton>
+                </Tooltip>
               </Box>
             </Typography>
           </Card>
@@ -353,6 +356,7 @@ export function OverviewEcommerceView() {
               </div>
             </Tooltip>}
             action={<FormDialog />}
+            
           />
         </Grid>
 
@@ -437,9 +441,11 @@ export function OverviewEcommerceView() {
                 >
                   <div>Trash(10)</div>
                 </Tooltip>
+                <Tooltip title="Clear trash." arrow placement='top'>
                 <IconButton edge="end">
                   <Iconify icon="solar:trash-bin-trash-bold" />
                 </IconButton>
+                </Tooltip>
               </Box>
             </Typography>
           </Card>
@@ -491,9 +497,10 @@ export function OverviewEcommerceView() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
+                      <Tooltip title="Copy Text" arrow placement="bottom">
                       <IconButton edge="end" onClick={handleCopy}>
                         <Iconify width={18} icon="solar:copy-bold" />
-                      </IconButton>
+                      </IconButton></Tooltip>
                     </InputAdornment>
                   ),
                 }}
@@ -536,10 +543,14 @@ export function OverviewEcommerceView() {
               <Box sx={{ display: 'flex', alignItems: 'center' }}>
                 <Typography sx={{ mb: 0 }}>Rate limit</Typography>
                 <Box sx={{ flexGrow: 1 }} /> {/* This will take up the available space */}
+                <Tooltip title="Activate request limit."
+                  arrow
+                  placement="top"> 
                 <FormControlLabel
                   justifyContent="end"
                   control={<Switch onChange={handleRatelimitToggle} />}
                 />
+                </Tooltip>
               </Box>
 
               {showRatelimitField && (
@@ -607,11 +618,14 @@ export function OverviewEcommerceView() {
             />
 
             <DialogContent>
-              <FormControlLabel
-                control={<Switch onChange={handleRetryToggle} />}
+            <FormControlLabel control={
+                <Tooltip title="Enable retries on failure."arrow placement="top">
+                <Switch onChange={handleRetryToggle} />
+                </Tooltip>
+                }
                 label="Retry"
                 sx={{ '& .MuiFormControlLabel-label': { fontSize: '15px' } }}
-              />
+            />
               {showRetryField && (
                 <>
                   <Typography sx={{ mb: 1, mt: 1, fontSize: '15px' }}>Strategy</Typography>
@@ -681,11 +695,14 @@ export function OverviewEcommerceView() {
             </DialogContent>
 
             <DialogContent>
-              <FormControlLabel
-                control={<Switch onChange={handleDelayToggle} />}
+            <FormControlLabel control={
+                <Tooltip title="Activate retry delay."arrow placement="top">
+                <Switch onChange={handleDelayToggle} />
+                </Tooltip>
+                }
                 label="Delay"
                 sx={{ '& .MuiFormControlLabel-label': { fontSize: '15px' } }}
-              />
+            />
               {showDelayField && (
                 <>
                   <Typography sx={{ mb: 1, mt: 1, fontSize: '15px' }}>Backoff Interval</Typography>
@@ -726,11 +743,14 @@ export function OverviewEcommerceView() {
             </DialogContent>
 
             <DialogContent>
-              <FormControlLabel
-                control={<Switch onChange={handleBatchSizeToggle} />}
+            <FormControlLabel control={
+                <Tooltip title="Batch size to process."arrow placement="top">
+                <Switch onChange={handleBatchSizeToggle} />
+                </Tooltip>
+                }
                 label="BatchSize"
                 sx={{ '& .MuiFormControlLabel-label': { fontSize: '15px' } }}
-              />
+            />
               {showBatchSizeField && (
                 <>
                   <Typography sx={{ mb: 1, mt: 1, fontSize: '15px' }}>Batch Size</Typography>
@@ -746,11 +766,16 @@ export function OverviewEcommerceView() {
             </DialogContent>
 
             <DialogContent>
-              <FormControlLabel
-                control={<Switch onChange={handleFilterToggle} />}
-                label="Filter"
-                sx={{ '& .MuiFormControlLabel-label': { fontSize: '15px' } }}
-              />
+       
+            <FormControlLabel control={
+                  <Tooltip title="Apply filter." arrow placement='top'>
+                  <Switch onChange={handleFilterToggle} />
+                  </Tooltip>
+                  }
+                  label="Filter"
+                  sx={{ '& .MuiFormControlLabel-label': { fontSize: '15px' } }}
+            />
+              
               {showFilterField && (
                 <Box sx={{ width: '100%' }}>
                   <Tabs value={selectedTab} onChange={handleTabChange} variant="fullWidth">
@@ -773,9 +798,11 @@ export function OverviewEcommerceView() {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment sx={{ mt: -9.5 }}>
-                              <IconButton edge="end" onClick={handleCopy}>
-                                <Iconify width={18} icon="solar:copy-bold" />
-                              </IconButton>
+                               <Tooltip title="Copy Text" arrow placement="bottom">
+                               <IconButton edge="end" onClick={handleCopy}>
+                               <Iconify width={18} icon="solar:copy-bold" />
+                               </IconButton>
+                               </Tooltip>
                             </InputAdornment>
                           ),
                         }}
@@ -794,9 +821,11 @@ export function OverviewEcommerceView() {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment sx={{ mt: -9.5 }}>
-                              <IconButton edge="end" onClick={handleCopy}>
-                                <Iconify width={18} icon="solar:copy-bold" />
-                              </IconButton>
+                              <Tooltip title="Copy Text" arrow placement="bottom">
+                               <IconButton edge="end" onClick={handleCopy}>
+                               <Iconify width={18} icon="solar:copy-bold" />
+                               </IconButton>
+                               </Tooltip>
                             </InputAdornment>
                           ),
                         }}
@@ -815,9 +844,11 @@ export function OverviewEcommerceView() {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment sx={{ mt: -9.5 }}>
-                              <IconButton edge="end" onClick={handleCopy}>
-                                <Iconify width={18} icon="solar:copy-bold" />
-                              </IconButton>
+                              <Tooltip title="Copy Text" arrow placement="bottom">
+                               <IconButton edge="end" onClick={handleCopy}>
+                               <Iconify width={18} icon="solar:copy-bold" />
+                               </IconButton>
+                               </Tooltip>
                             </InputAdornment>
                           ),
                         }}
@@ -835,9 +866,11 @@ export function OverviewEcommerceView() {
                         InputProps={{
                           endAdornment: (
                             <InputAdornment sx={{ mt: -9.5 }}>
-                              <IconButton edge="end" onClick={handleCopy}>
-                                <Iconify width={18} icon="solar:copy-bold" />
-                              </IconButton>
+                              <Tooltip title="Copy Text" arrow placement="bottom">
+                               <IconButton edge="end" onClick={handleCopy}>
+                               <Iconify width={18} icon="solar:copy-bold" />
+                               </IconButton>
+                               </Tooltip>
                             </InputAdornment>
                           ),
                         }}
@@ -886,7 +919,7 @@ export function OverviewEcommerceView() {
                     <Button onClick={handleClose} variant="outlined" color="inherit">
                       Cancel
                     </Button>
-                    <Button onClick={handleOpenSnackbar} variant="outlined" color="inherit">
+                    <Button onClick={handleOpenSnackbar} variant="contained" color="inherit">
                       Create
                     </Button>
                     <Snackbar
@@ -896,10 +929,9 @@ export function OverviewEcommerceView() {
                       onClose={handleCloseSnackbar}
                       message="This is an error Alert."
                       anchorOrigin={{
-                        vertical: '10px',
+                        vertical: 'top',
                         horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
                       }}
-                      sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
                     >
                       <Alert onClose={handleCloseSnackbar} severity="success">
                         Connection successfully setup.
@@ -909,25 +941,9 @@ export function OverviewEcommerceView() {
                 </Dialog>
               </>
 
-              <Button onClick={handleOpenSnackbar} variant="outlined" color="inherit">
+              <Button onClick={handleClose} variant="outlined" color="inherit">
                 Cancel
               </Button>
-              <Snackbar
-
-                open={openSnackbar}
-                autoHideDuration={4000}
-                onClose={handleCloseSnackbar}
-                message="This is an error Alert."
-                anchorOrigin={{
-                  vertical: '10px',
-                  horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
-                }}
-                sx={{ position: 'fixed', top: -940, }}  // Add zIndex here
-              >
-                <Alert onClose={handleCloseSnackbar} severity="error">
-                  Folder is name required
-                </Alert>
-              </Snackbar>
             </DialogContent>
           </Card>
         </Grid>

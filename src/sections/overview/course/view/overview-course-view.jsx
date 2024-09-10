@@ -56,13 +56,7 @@ export function OverviewCourseView() {
                 </Typography>
               </div>
               <Box sx={{ mt: { xs: 2, sm: 1.8 } }}>
-                <Tooltip
-                  title="Start building a new connections "
-                  arrow
-                  placement="top"
-                >
-                  <div><FormDialog /></div>
-                </Tooltip>
+               <FormDialog />
               </Box>
             </Box>
           </Box>

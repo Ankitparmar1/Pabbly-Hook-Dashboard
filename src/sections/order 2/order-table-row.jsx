@@ -13,14 +13,22 @@ import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
 import ListItemText from '@mui/material/ListItemText';
-import { Grid, AppBar, Divider, Toolbar, TextField, Typography, IconButton } from '@mui/material';
+import {
+  Grid,
+  AppBar,
+  Divider,
+  Toolbar,
+  Tooltip,
+  TextField,
+  Typography,
+  IconButton,
+} from '@mui/material';
 
 import { useBoolean } from 'src/hooks/use-boolean';
 
 import { Iconify } from 'src/components/iconify';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
-
 
 export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteRow }) {
   const confirm = useBoolean();
@@ -76,10 +84,18 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Box component="span">trs_66c87b54a2b7dc2c1740d639   <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-              <Iconify sx={{ mt: -0.2 }}
-                width={14} icon="solar:copy-bold" />
-            </IconButton></Box>
+            <Box component="span">
+              trs_66c87b54a2b7dc2c1740d639{' '}
+              <Tooltip title="Copy Text " arrow placement="bottom">
+                <IconButton
+                  edge="end"
+                  sx={{ color: 'text.disabled' }}
+                  onClick={() => navigator.clipboard.writeText('trs_66c87b54a2b7dc2c1740d639')}
+                >
+                  <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
+                </IconButton>
+              </Tooltip>
+            </Box>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
@@ -231,7 +247,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               edge="start"
               sx={{
                 position: 'absolute',
-                top: 12, // Adjust top position as needed
+                top: 1, // Adjust top position as needed
                 right: 28, // Adjust right position as needed
               }}
               onClick={handleCloseDrawer}
@@ -259,11 +275,15 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
           >
             trs_66c87b54a2b7dc2c1740d639
-
-            <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-              <Iconify sx={{ mt: -0.2 }}
-                width={14} icon="solar:copy-bold" />
-            </IconButton>
+            <Tooltip title="Copy Text " arrow placement="bottom">
+              <IconButton
+                edge="end"
+                sx={{ color: 'text.disabled' }}
+                onClick={() => navigator.clipboard.writeText('trs_66c87b54a2b7dc2c1740d639')}
+              >
+                <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
+              </IconButton>
+            </Tooltip>
           </Typography>
         </AppBar>
         <Divider />
@@ -325,8 +345,20 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               <Typography variant="body2">Transformation Code</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-              <Box sx={{ position: 'relative', maxHeight: 400, overflowY: 'auto', border: '1px solid #ccc', borderRadius: 2, p: 2 }}>
-                <SyntaxHighlighter language="javascript" customStyle={{ backgroundColor: 'transparent' }} wrapLongLines >
+              <Box
+                sx={{
+                  position: 'relative',
+                  maxHeight: 400,
+                  overflowY: 'auto',
+                  border: '1px solid #ccc',
+                  borderRadius: 2,
+                }}
+              >
+                <SyntaxHighlighter
+                  language="javascript"
+                  customStyle={{ backgroundColor: 'transparent' }}
+                  wrapLongLines
+                >
                   {`(request, context) => {
     // Initialize a counter
     let itemCounter = 0;
@@ -367,19 +399,58 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                   edge="end"
                   sx={{
                     position: 'absolute',
-                    top: 20, // Adjust as needed
-                    right: 30, // Adjust as needed
+                    top: 15, // Adjust as needed
+                    right: 8, // Adjust as needed
                     color: 'text.disabled',
                   }}
+                  onClick={() =>
+                    navigator.clipboard.writeText((request, context) => {
+                      // Initialize a counter
+                      let itemCounter = 0;
+                      // Process a list of items
+                      request.payload.items = request.payload.items || [];
+                      request.payload.items.forEach((item) => {
+                        if (item.status === 'active') {
+                          itemCounter += 1; // Avoiding ++ operator
+                          item.updated_at = new Date().toISOString();
+                        } else {
+                          item.status = 'inactive';
+                        }
+                      });
+
+                      // Add a summary field
+                      request.payload.summary = {
+                        activeItemCount: itemCounter,
+                        totalItems: request.payload.items.length,
+                      };
+
+                      // Add a new header
+                      request.headers['X-Item-Count'] = itemCounter.toString();
+
+                      // Process query parameters
+                      request.queryParams.processedAt = new Date().toISOString();
+
+                      // Error handling for missing fields
+                      if (!request.payload.items.length) {
+                        throw new Error('No items to process');
+                      }
+
+                      return request;
+                    })
+                  }
                 >
-                  <Iconify width={18} icon="solar:copy-bold" />
+                  <Tooltip title="Copy Text " arrow placement="bottom">
+                    <div>
+                      <Iconify width={16} icon="solar:copy-bold" />
+                    </div>
+                  </Tooltip>
                 </IconButton>
               </Box>
             </Grid>
           </Grid>
         </Box>
         {/* </Card> */}
-      </Drawer >
+      </Drawer>
     </>
   );
 }

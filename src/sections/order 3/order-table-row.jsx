@@ -23,24 +23,21 @@ import { usePopover, CustomPopover } from 'src/components/custom-popover';
 
 import { FullScreenDialog } from '../dialog-view/full-screen-dialog';
 
-
 export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteRow }) {
   // List of items to copy
   const copyItems = [
-    { id: 1, text: "req_66c87b54a2b7dc2c1740d639", label: "req_66c87b54a2b7dc2c1740d639" },
+    { id: 1, text: 'req_66c87b54a2b7dc2c1740d639', label: 'req_66c87b54a2b7dc2c1740d639' },
 
     // Add more items as needed
   ];
 
   const evtItems = [
-    { id: 1, text: "evt_66c87b54a2b7dc2c1740d639", label: "evt_66c87b54a2b7dc2c1740d639" },
+    { id: 1, text: 'evt_66c87b54a2b7dc2c1740d639', label: 'evt_66c87b54a2b7dc2c1740d639' },
 
     // Add more items as needed
   ];
   // Function to copy text to clipboard
-  const handleCopy = (text) => {
-
-  };
+  const handleCopy = (text) => {};
 
   const confirm = useBoolean();
   const collapse = useBoolean();
@@ -78,7 +75,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             </Label>
             {/* <Box component="span"><Label variant="soft" size="small" color='success'>success</Label></Box> */}
             <Box
-
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
             >
@@ -119,20 +115,32 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {copyItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Typography fontSize={18} color='#1c252e'>{item.label}</Typography>
-                <Tooltip title="Copy Text">
-                  <IconButton color="primary" onClick={() => handleCopy(item.text)}>
-                    <Iconify color="#919eab" width={16} icon="solar:copy-bold" />
+                <Typography fontSize={18} color="#1c252e">
+                  {item.label}
+                </Typography>
+                <Tooltip title="Copy Text " arrow placement="bottom">
+                  <IconButton
+                    edge="end"
+                    sx={{ color: 'text.disabled' }}
+                    onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
+                  >
+                    <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
               </Box>
             ))}
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Typography fontSize={12} color='#919eab'>{item.label}</Typography>
-                <Tooltip title="Copy Text">
-                  <IconButton color="primary" onClick={() => handleCopy(item.text)}>
-                    <Iconify color="#919eab" width={16} icon="solar:copy-bold" />
+                <Typography fontSize={12} color="#919eab">
+                  {item.label}
+                </Typography>
+                <Tooltip title="Copy Text " arrow placement="bottom">
+                  <IconButton
+                    edge="end"
+                    sx={{ color: 'text.disabled' }}
+                    onClick={() => navigator.clipboard.writeText('evt_66c87b54a2b7dc2c1740d639')}
+                  >
+                    <Iconify sx={{ mt: -0.2 }} width={15} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
               </Box>
@@ -140,12 +148,10 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-      <TableCell>
-        { }
-      </TableCell>
+      <TableCell>{}</TableCell>
       <TableCell>
         <Stack spacing={2} direction="row" alignItems="center">
-          { }
+          {}
         </Stack>
       </TableCell>
 
@@ -163,13 +169,17 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           <Iconify icon="eva:arrow-ios-downward-fill" />
         </IconButton> */}
 
-        <IconButton sx={{ mt: -0.2 }} color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
+        <IconButton
+          sx={{ mt: -0.2 }}
+          color={popover.open ? 'inherit' : 'default'}
+          onClick={popover.onOpen}
+        >
           <Iconify icon="eva:more-vertical-fill" />
         </IconButton>
       </TableCell>
 
       {/* <TableCell align="center"> </TableCell> */}
-    </TableRow >
+    </TableRow>
   );
 
   const renderSecondary = (
@@ -212,7 +222,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Paper>
         </Collapse>
       </TableCell>
-
     </TableRow>
   );
 

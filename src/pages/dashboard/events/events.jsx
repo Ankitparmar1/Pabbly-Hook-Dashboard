@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { CONFIG } from 'src/config-global';
 
 import { OrderListView } from 'src/sections/order 3/view';
+// import { ProductListView } from 'src/sections/product/view';
 import { OverviewCourseView } from 'src/sections/course2/view';
 
 
@@ -19,6 +20,7 @@ export default function Page() {
       </Helmet>
       <OverviewCourseView />
       <OrderListView />
+      {/* <ProductListView /> */}
     </div>
   );
 }

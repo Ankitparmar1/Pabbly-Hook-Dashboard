@@ -22,19 +22,19 @@ function MotivationIllustration({ hideBackground, sx, ...other }) {
 
   return (
     <div style={{ position: 'relative', display: 'inline-block', width: '100%' }}>
-      {/* Image and IconButton */}
       <Button
         onClick={handleClickOpen}
         style={{ position: 'relative', padding: 0, minWidth: 0 }}
         sx={{ padding: '0px', width: '100%', height: '180px' }}
       >
         <img
-          src={`${CONFIG.site.basePath}/public/assets/background/hookpabbly.png`}
+          src={`${CONFIG.site.basePath}https://testhooks.pabbly.com/static/media/video-thumbnail.b1ad052c3966098dccce.png`}
           alt="Background"
           height="180"
           width="740"
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: '100%', height: 'auto', border: '5px', borderRadius: '10px' }}
         />
+
       </Button>
 
       <IconButton
