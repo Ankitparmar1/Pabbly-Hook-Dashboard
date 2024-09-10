@@ -26,7 +26,6 @@ import {
 } from '@mui/material';
 
 import { DashboardContent } from 'src/layouts/dashboard';
-import { MotivationIllustration } from 'src/assets/illustrations';
 
 import { OrderListView } from 'src/sections/order/view';
 
@@ -35,6 +34,8 @@ import { useMockedUser } from 'src/auth/hooks';
 
 import Alert from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
+
+import { MotivationIllustration } from 'src/assets/illustrations';
 
 import { Iconify } from 'src/components/iconify';
 
