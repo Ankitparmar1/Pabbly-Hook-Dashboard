@@ -227,38 +227,19 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         slotProps={{ arrow: { placement: 'right-top' } }}
       >
         <MenuList >
-          <MenuItem
-            onClick={() => {
-              popover.onClose();
-            }}
-          >
+          <MenuItem>
             <Iconify icon="mingcute:history-fill" />
             Update
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              onViewRow();
-              popover.onClose();
-            }}
-          >
+          <MenuItem>
             <Iconify icon="clarity:clone-solid" />
             Clone
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              onViewRow();
-              popover.onClose();
-            }}
-          >
+          <MenuItem>
             <Iconify icon="solar:move-to-folder-bold" />
             Move To Folder
           </MenuItem>
-          <MenuItem
-            onClick={() => {
-              onViewRow();
-              popover.onClose();
-            }}
-          >
+          <MenuItem>
             <Iconify icon="material-symbols:family-history" />
             Connection History
           </MenuItem>
