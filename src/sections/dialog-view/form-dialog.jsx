@@ -115,7 +115,11 @@ export function FormDialog() {
           <Button onClick={dialog.onFalse} variant="outlined" color="inherit">
             Cancel
           </Button>
+<<<<<<< HEAD
           <Button onClick={handleOpenSnackbar} variant="contained">
+=======
+          <Button onClick={handleOpenSnackbar} variant="contained" >
+>>>>>>> 0767e76e829f62871dec62013d33f6cbd5e9f9be
             Create
           </Button>
           <Snackbar

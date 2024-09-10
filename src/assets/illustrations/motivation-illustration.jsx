@@ -29,12 +29,17 @@ function MotivationIllustration({ hideBackground, sx, ...other }) {
         sx={{ padding: '0px', width: '100%', height: '180px' }}
       >
         <img
+<<<<<<< HEAD
           src={`${CONFIG.site.basePath}/public/assets/background/Hook01.webp`}
+=======
+          src={`${CONFIG.site.basePath}https://testhooks.pabbly.com/static/media/video-thumbnail.b1ad052c3966098dccce.png`}
+>>>>>>> 0767e76e829f62871dec62013d33f6cbd5e9f9be
           alt="Background"
           height="180"
           width="740"
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: '100%', height: 'auto', border: '5px', borderRadius: '10px' }}
         />
+
       </Button>
 
       <IconButton

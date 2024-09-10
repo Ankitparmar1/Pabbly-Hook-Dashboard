@@ -27,10 +27,11 @@ export function WorkspacesPopover({ data = [], sx, ...other }) {
     [popover]
   );
 
+
   return (
     <>
       {
-        <img src="public/logo/pabbly-hook-logo.png" alt="pabblylogo" style={{ maxWidth: '150px', height: '52.3px' }} />
+        <img src="https://testhooks.pabbly.com/static/media/fg-logo.eeb65831edadd81b5229ff0912db5820.svg" alt="pabblylogo" style={{ maxWidth: '150px', height: '52.3px' }} />
       /* <ButtonBase
         disableRipple
         onClick={popover.onOpen}
