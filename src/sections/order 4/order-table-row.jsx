@@ -128,8 +128,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           <Iconify icon="eva:more-vertical-fill" />
         </IconButton> */}
       </TableCell>
-
-      {/* <TableCell align="center"> </TableCell> */}
     </TableRow>
   );
 
@@ -137,7 +135,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
     <TableRow>
       <TableCell sx={{ p: 0, border: 'none' }} colSpan={8}>
         {' '}
-        {/* Adjust colSpan according to the number of columns in your table */}
         <Collapse
           in={collapse.value}
           timeout="auto"
