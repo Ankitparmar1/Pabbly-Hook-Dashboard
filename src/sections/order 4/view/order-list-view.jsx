@@ -36,7 +36,6 @@ import {
   TablePaginationCustom,
 } from 'src/components/table';
 
-// import { OrderTableRow } from '../order-table-row';
 import { OrderTableToolbar } from '../order-table-toolbar';
 import { OrderTableFiltersResult } from '../order-table-filters-result';
 
@@ -45,12 +44,10 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'ISSUES NAME' },
-  { id: 'name', label: 'ISSUES ID' },
+  { id: 'orderNumber', label: (<Tooltip title="View issue names " placement='top'>ISSUES/NAME</Tooltip>) },
+  { id: 'name', label: (<Tooltip title="view issues ID's." placement='top'>ISSUES/ID</Tooltip>) },
   { id: 'createdAt', label: '' },
-  { id: 'totalAmount', label: 'ISSUES CODE', align: 'right' },
-  // { id: 'status', label: 'Action' },
-  // { id: '', label: '', align: 'right' }, // Add an empty column for right alignment
+  { id: 'totalAmount', label: (<Tooltip title="List of code and issue." placement='top'>ISSUES/CODE</Tooltip>), align: 'right' },
 ];
 
 // ----------------------------------------------------------------------
@@ -188,32 +185,6 @@ export function OrderListView() {
                     )
                   }
                 />
-
-                {/* <TableBody>
-                  {dataFiltered
-                    .slice(
-                      table.page * table.rowsPerPage,
-                      table.page * table.rowsPerPage + table.rowsPerPage
-                    )
-                    .map((row) => (
-                      <OrderTableRow
-                        key={row.id}
-                        row={row}
-                        selected={table.selected.includes(row.id)}
-                        onSelectRow={() => table.onSelectRow(row.id)}
-                        onDeleteRow={() => handleDeleteRow(row.id)}
-                        onViewRow={() => handleViewRow(row.id)}
-                        sx={{ width: '100%' }} // Full width for each row
-                      />
-                    ))}
-
-                  <TableEmptyRows
-                    height={table.dense ? 56 : 56 + 20}
-                    emptyRows={emptyRows(table.page, table.rowsPerPage, dataFiltered.length)}
-                  />
-
-                  <TableNoData notFound={notFound} />
-                </TableBody> */}
               </Table>
             </Scrollbar>
           </Box>

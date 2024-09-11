@@ -77,7 +77,7 @@ export function OverviewCourseView() {
             </Tooltip>
 
 
-            <Tooltip title="Number of total events." arrow placement='top'>
+            <Tooltip title="Number of total request." arrow placement='top'>
               <div>
                 <CourseWidgetSummary
                   title="Total Request"
@@ -88,7 +88,7 @@ export function OverviewCourseView() {
               </div>
             </Tooltip>
 
-            <Tooltip title="Number of total request." arrow placement='top'>
+            <Tooltip title="Number of total events." arrow placement='top'>
               <div>
                 <CourseWidgetSummary
                   title="Total Events"

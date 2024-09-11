@@ -71,37 +71,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         </Stack>
       </TableCell>
 
-      <TableCell>
-        <Stack spacing={2} direction="row" alignItems="center">
-          <Stack
-            sx={{
-              typography: 'body2',
-              flex: '1 1 auto',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Box component="span">trs_66c87b54a2b7dc2c1740d639</Box>
-            <Box
-              component="span"
-              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
-            />
-          </Stack>
-        </Stack>
-      </TableCell>
-      <TableCell>
-        {/* <Label
-          variant="soft"
-          color={
-            (row.status === 'completed' && 'success') ||
-            (row.status === 'pending' && 'warning') ||
-            (row.status === 'cancelled' && 'error') ||
-            'default'
-          }
-        >
-          {row.status}
-        </Label> */}
-      </TableCell>
-
       <TableCell align="right">
         <Box
           component="span"
@@ -110,23 +79,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         >
           {'(request, context) =>'}
         </Box>
-      </TableCell>
-
-      <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
-        {/* <Button variant="outlined" color="primary" size="small" sx={{ fontSize: '12px' }}>
-          Access inbox
-        </Button> */}
-        {/* <IconButton
-          color={collapse.value ? 'inherit' : 'default'}
-          onClick={collapse.onToggle}
-          sx={{ ...(collapse.value && { bgcolor: 'action.hover' }) }}
-        >
-          <Iconify icon="eva:arrow-ios-downward-fill" />
-        </IconButton> */}
-
-        {/* <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
-          <Iconify icon="eva:more-vertical-fill" />
-        </IconButton> */}
       </TableCell>
     </TableRow>
   );
