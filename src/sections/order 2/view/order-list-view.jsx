@@ -48,12 +48,33 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'TRANSFORMATION NAME ' },
-  { id: 'name', label: 'TRANSFORMATION ID' },
-  { id: 'totalAmount', label: 'TRANSFORMATION CODE', align: 'right' },
-  // { id: 'status', label: 'Action' },
-  // { id: '', label: '', align: 'right' }, // Add an empty column for right alignment
+  { 
+    id: 'orderNumber', 
+    label: (
+      <Tooltip title="View transformation name and date of creation." arrow placement="top">
+        <span>TRANSFORMATION NAME/DATE</span>
+      </Tooltip>
+    )
+  },
+  { 
+    id: 'name', 
+    label: (
+      <Tooltip title="View transformation ID's." arrow placement="top">
+        <span>TRANSFORMATION ID</span>
+      </Tooltip>
+    )
+  },
+  { 
+    id: 'totalAmount', 
+    label: (
+      <Tooltip title="View transformation code summary." arrow placement="top">
+        <span>TRANSFORMATION CODE</span>
+      </Tooltip>
+    ),
+    align: 'right' 
+  }
 ];
+
 
 // ----------------------------------------------------------------------
 
