@@ -31,9 +31,11 @@ import {
   IconButton,
 } from '@mui/material';
 
+import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
+
 
 // import { AppBar } from 'src/theme/core/components/appbar';
 // import { Typography } from 'src/theme/core';
@@ -88,10 +90,20 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Box component="span">Ankit singh parmar</Box>
+            <Label
+              size="small"
+              variant="soft"
+              color={
+                (row.status === 'Accepted' && 'success') ||
+                (row.status === 'Blocked' && 'error') ||
+                'default'
+              }
+            >
+              {row.status}
+            </Label>
             <Box
               component="span"
-              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
+              sx={{ color: 'text.disabled', mt: 1, fontSize: '12px', fontWeight: 400 }}
             >
               Aug 23, 2024 17:36:44.929
             </Box>
@@ -100,19 +112,19 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
       </TableCell>
 
       <TableCell>
+        <Box fontSize={16}>Ankit Singh Parmar</Box>
+      </TableCell>
+      <TableCell>
         <Stack spacing={2} direction="row" alignItems="center">
           <Stack
             sx={{
               typography: 'body2',
               flex: '1 1 auto',
-              alignItems: 'flex-start',
+              alignItems: 'flex-end',
             }}
           >
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Typography fontSize={16} color="283746">
-                  {item.label}
-                </Typography>
                 <Tooltip title="Copy Text " arrow placement="bottom">
                   <IconButton
                     edge="end"
@@ -122,6 +134,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
+                <Typography onClick={handleOpenDrawer} fontSize={16} color="283746">
+                  {item.label}
+                </Typography>
               </Box>
             ))}
             <Box
@@ -131,30 +146,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-      <TableCell align="right">
-        <Button
-          size="small"
-          onClick={handleOpenDrawer}
-          variant="soft"
-          color={
-            (row.status === 'Accepted' && 'success') ||
-            (row.status === 'Blocked' && 'error') ||
-            'default'
-          }
-        >
-          {row.status}
-        </Button>
-      </TableCell>
-
-      {/* <TableCell align="center"> </TableCell> */}
     </TableRow>
   );
 
   const renderSecondary = (
     <TableRow>
       <TableCell sx={{ p: 0, border: 'none' }} colSpan={8}>
-        {' '}
-        {/* Adjust colSpan according to the number of columns in your table */}
         <Collapse
           in={collapse.value}
           timeout="auto"
@@ -184,8 +181,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     mt: 0.5,
                   }}
                 />
-                {/* <div>x{item.quantity} </div> */}
-                {/* <Box sx={{ width: 110, textAlign: 'right' }}>{fCurrency(item.price)}</Box> */}
               </Stack>
             ))}
           </Paper>
@@ -242,12 +237,14 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         onClose={handleCloseDrawer}
         anchor="right"
         slotProps={{ backdrop: { invisible: true } }}
-        PaperProps={{  sx: {
-      width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
-      '@media (max-width: 300px)': {
-        padding: '16px',
-      },
-    }, }}
+        PaperProps={{
+          sx: {
+            width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
+            '@media (max-width: 300px)': {
+              padding: '16px',
+            },
+          },
+        }}
       >
         {/* <Card component="ul" position="relative" float="left"> */}
         <AppBar
@@ -269,10 +266,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             >
               <Iconify icon="mingcute:close-line" />
             </IconButton>
-            {/* You can uncomment this Button if you need a Save button */}
-            {/* <Button autoFocus color="inherit" variant="contained" onClick={dialog.onFalse}>
-            Save
-          </Button> */}
           </Toolbar>
           <Typography
             sx={{
@@ -287,7 +280,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             Ankit parmar
           </Typography>
           <Typography
-            sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
+            sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '14px', fontWeight: 400 }}
           >
             req_66c87b54a2b7dcc1740d639
             <IconButton edge="end" sx={{ color: 'text.disabled' }}>
