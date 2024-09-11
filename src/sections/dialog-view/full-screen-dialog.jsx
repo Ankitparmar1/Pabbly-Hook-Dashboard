@@ -27,9 +27,11 @@ export function FullScreenDialog() {
 
   return (
     <>
+    <Tooltip title="Tap to view full event history." arrow placement='top'>
       <Button size="small" variant="outlined" color="success" onClick={dialog.onTrue}>
         Attempt : 1
       </Button>
+      </Tooltip>
 
       <Drawer
         PaperProps={{
@@ -82,7 +84,7 @@ export function FullScreenDialog() {
               sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
             >
               Request:- req_86d8c060c2a54528995b0215a0c8592
-              <Tooltip title="Copy Text " arrow placement="bottom">
+              <Tooltip title="Copy request_id " arrow placement="bottom">
                 <IconButton
                   edge="end"
                   sx={{ color: 'text.disabled' }}
@@ -98,7 +100,7 @@ export function FullScreenDialog() {
               sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
             >
               Events:- evt_66c87b54a2b7dc2c1740d639
-              <Tooltip title="Copy Text " arrow placement="bottom">
+              <Tooltip title="Copy event_id" arrow placement="bottom">
                 <IconButton
                   edge="end"
                   sx={{ color: 'text.disabled' }}

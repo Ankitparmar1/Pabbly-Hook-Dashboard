@@ -87,7 +87,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', mt: 1, fontWeight: 400 }}
             >
+            <Tooltip title="Events Date: Aug 8, 2024 15:25:33.366" arrow placement='top'>
               Aug 8, 2024 15:25:33.366
+              </Tooltip>
             </Box>
           </Stack>
         </Stack>
@@ -102,7 +104,8 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Box fontSize={14} component="span">Rajpal singh Tomar</Box>
+            <Box fontSize={14} component="span">
+            <Tooltip title="Connection Name: Rajpal singh Tomar" arrow placement='top'>Rajpal singh Tomar</Tooltip></Box>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
@@ -122,9 +125,11 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {copyItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center' }}>
+              <Tooltip title="Request ID" arrow placement='top'>
                 <Typography fontSize={14} color="#1c252e">
                   {item.label}
                 </Typography>
+                </Tooltip>
                 <Tooltip title="Copy request_id " arrow placement="bottom">
                   <IconButton
                     edge="end"
@@ -138,9 +143,11 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             ))}
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', mt: -0.3 }}>
+              <Tooltip title="Event ID" arrow placement='top'>
                 <Typography fontSize={12} color="#919eab">
                   {item.label}
                 </Typography>
+                </Tooltip>
                 <Tooltip title="Copy event_id" arrow placement="bottom">
                   <IconButton
                     edge="end"
