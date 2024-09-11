@@ -48,7 +48,7 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'DATE/STATUS' },
+  { id: 'orderNumber', label: 'STATUS/DATE' },
   { id: 'name', label: 'CONNECTION NAME ' },
   { id: 'createdAt', label: 'REQUEST/EVENTS' },
   { id: '', label: '', align: 'left' },

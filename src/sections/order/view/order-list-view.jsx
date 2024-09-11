@@ -48,11 +48,9 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_CONNECTION = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_CONNECTION];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'DATE/STATUS' },
-  { id: 'name', label: 'CONNECTION NAME' },
-  { id: 'createdAt' },
-  { id: 'createdAt', label: 'REQUEST/EVENTS', align: 'left' },
-  { id: '', label: '', align: 'right' }, // Add an empty column for right alignment
+  { id: 'orderNumber', label: 'STATUS/DATE' },
+  { id: 'name', label: 'CONNECTION NAME', align: 'left' },
+  { id: 'createdAt', label: 'REQUEST/EVENTS', align: 'right' },
 ];
 
 // ----------------------------------------------------------------------
@@ -159,8 +157,6 @@ export function OrderListView() {
                     }
                     color={
                       (tab.value === 'Active' && 'success') ||
-                      // (tab.value === 'pending' && 'warning') ||
-                      // (tab.value === 'rejected' && 'error') ||
                       (tab.value === 'Inactive' && 'error') ||
                       'default'
                     }

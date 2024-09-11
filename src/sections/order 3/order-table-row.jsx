@@ -37,7 +37,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
     // Add more items as needed
   ];
   // Function to copy text to clipboard
-  const handleCopy = (text) => {};
+  const handleCopy = (text) => { };
 
   const confirm = useBoolean();
   const collapse = useBoolean();
@@ -76,7 +76,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             {/* <Box component="span"><Label variant="soft" size="small" color='success'>success</Label></Box> */}
             <Box
               component="span"
-              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
+              sx={{ color: 'text.disabled', fontSize: '12px', mt: 1, fontWeight: 400 }}
             >
               Aug 8,2024 15:25:33.366
             </Box>
@@ -93,7 +93,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Box component="span">Rajpal singh Tomar</Box>
+            <Box fontSize={14} component="span">Rajpal singh Tomar</Box>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
@@ -114,8 +114,8 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             }}
           >
             {copyItems.map((item) => (
-              <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Typography fontSize={18} color="#1c252e">
+              <Box key={item.id} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Typography fontSize={14} color="#1c252e">
                   {item.label}
                 </Typography>
                 <Tooltip title="Copy Text " arrow placement="bottom">
@@ -124,13 +124,13 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     sx={{ color: 'text.disabled' }}
                     onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
                   >
-                    <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
+                    <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
               </Box>
             ))}
             {evtItems.map((item) => (
-              <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+              <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', mt: -0.3 }}>
                 <Typography fontSize={12} color="#919eab">
                   {item.label}
                 </Typography>
@@ -140,7 +140,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     sx={{ color: 'text.disabled' }}
                     onClick={() => navigator.clipboard.writeText('evt_66c87b54a2b7dc2c1740d639')}
                   >
-                    <Iconify sx={{ mt: -0.2 }} width={15} icon="solar:copy-bold" />
+                    <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
               </Box>
@@ -148,10 +148,10 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-      <TableCell>{}</TableCell>
+      <TableCell>{ }</TableCell>
       <TableCell>
         <Stack spacing={2} direction="row" alignItems="center">
-          {}
+          { }
         </Stack>
       </TableCell>
 

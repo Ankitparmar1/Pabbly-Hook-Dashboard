@@ -49,16 +49,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               variant="soft"
               color={
                 (row.status === 'Active' && 'success') ||
-                // (row.status === 'Inactive' && 'warning') ||
-                // (row.status === 'rejected' && 'error') ||
                 (row.status === 'Inactive' && 'error') ||
                 'default'
               }
             >
               {row.status}
             </Label>
-
-            {/* <Box component="span"><Label variant="soft" size="small" color='success'>success</Label></Box> */}
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
@@ -79,7 +75,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             }}
           >
             <Box component="span">
-              {' '}
               <a
                 style={{ textDecoration: 'none', color: '#078dee' }}
                 href="http://localhost:3030/dashboard/"
@@ -91,60 +86,32 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
-            >
-              {/* WhatsApp Business Account ID:117359445455733 */}
-            </Box>
+            />
+
           </Stack>
         </Stack>
       </TableCell>
 
-      <TableCell>
-        <Stack spacing={3} direction="row" alignItems="center">
-          {/* <Stack
-            sx={{
-              typography: 'body2',
-              flex: '1 1 auto',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Box component="span">
-              {' '}
-              <a
-                style={{ textDecoration: 'none', color: '#078dee' }}
-                href="http://localhost:3030/dashboard/"
-              >
-                Rajpal Singh Tomar
-              </a>
-            </Box>
-            <Typography sx={{ color: ' #919eab ', fontSize: '14px' }}>Ankit</Typography>
-            <Box
-              component="span"
-              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
-            >
-            </Box>
-          </Stack> */}
-        </Stack>
-      </TableCell>
 
       <TableCell>
-        <Stack spacing={2} direction="row" alignItems="right">
+        <Stack spacing={2} direction="row" alignItems="left">
           <Stack
+
             sx={{
               typography: 'body2',
               flex: '1 1 auto',
-              alignItems: 'flex-start',
+              alignItems: 'flex-end',
             }}
           >
             <Box component="span">
-              {' '}
               <a
                 style={{ textDecoration: 'none', color: '#078dee' }}
                 href="http://localhost:3030/dashboard/four"
               >
-                {' '}
                 0 Requests
               </a>
             </Box>
+
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '14px', fontWeight: 400 }}
@@ -156,6 +123,8 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 0 events
               </a>
             </Box>
+
+
           </Stack>
           <Stack spacing={2} direction="row" alignItems="right">
             <IconButton
@@ -168,15 +137,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-
-
     </TableRow>
   );
 
   const renderSecondary = (
     <TableRow>
       <TableCell sx={{ p: 0, border: 'none' }} colSpan={8}>
-        {/* Adjust colSpan according to the number of columns in your table */}
         <Collapse
           in={collapse.value}
           timeout="auto"
@@ -206,8 +172,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     mt: 0.5,
                   }}
                 />
-                {/* <div>x{item.quantity} </div> */}
-                {/* <Box sx={{ width: 110, textAlign: 'right' }}>{fCurrency(item.price)}</Box> */}
               </Stack>
             ))}
           </Paper>
