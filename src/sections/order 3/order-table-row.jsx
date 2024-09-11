@@ -27,16 +27,11 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
   // List of items to copy
   const copyItems = [
     { id: 1, text: 'req_66c87b54a2b7dc2c1740d639', label: 'req_66c87b54a2b7dc2c1740d639' },
-
-    // Add more items as needed
   ];
 
   const evtItems = [
     { id: 1, text: 'evt_66c87b54a2b7dc2c1740d639', label: 'evt_66c87b54a2b7dc2c1740d639' },
-
-    // Add more items as needed
   ];
-  // Function to copy text to clipboard
   const handleCopy = (text) => { };
 
   const confirm = useBoolean();
@@ -46,11 +41,11 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
   const renderPrimary = (
     <TableRow hover selected={selected}>
       <TableCell padding="checkbox">
-        <Checkbox
+        <Tooltip title="Select">  <Checkbox
           checked={selected}
           onClick={onSelectRow}
           inputProps={{ id: `row-checkbox-${row.id}`, 'aria-label': `Row checkbox` }}
-        />
+        /></Tooltip>
       </TableCell>
 
       <TableCell>
@@ -62,23 +57,37 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Label
-              variant="soft"
-              color={
-                (row.status === 'success' && 'success') ||
-                (row.status === 'rejected' && 'error') ||
-                (row.status === 'scheduled' && 'info') ||
-                'default'
+            {/* Tooltip added around the Label component for all statuses */}
+            <Tooltip
+              title={
+                row.status === 'success'
+                  ? 'This is a successful event'
+                  : row.status === 'rejected'
+                    ? 'This event was rejected'
+                    : row.status === 'scheduled'
+                      ? 'This event is scheduled'
+                      : ''
               }
+              arrow
+              placement='top'
             >
-              {row.status}
-            </Label>
-            {/* <Box component="span"><Label variant="soft" size="small" color='success'>success</Label></Box> */}
+              <Label
+                variant="soft"
+                color={
+                  (row.status === 'success' && 'success') ||
+                  (row.status === 'rejected' && 'error') ||
+                  (row.status === 'scheduled' && 'info') ||
+                  'default'
+                }
+              >
+                {row.status}
+              </Label>
+            </Tooltip>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', mt: 1, fontWeight: 400 }}
             >
-              Aug 8,2024 15:25:33.366
+              Aug 8, 2024 15:25:33.366
             </Box>
           </Stack>
         </Stack>
@@ -97,9 +106,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
-            >
-              {/* WhatsApp Business Account ID:117359445455733 */}
-            </Box>
+            />
           </Stack>
         </Stack>
       </TableCell>
@@ -118,7 +125,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 <Typography fontSize={14} color="#1c252e">
                   {item.label}
                 </Typography>
-                <Tooltip title="Copy Text " arrow placement="bottom">
+                <Tooltip title="Copy request_id " arrow placement="bottom">
                   <IconButton
                     edge="end"
                     sx={{ color: 'text.disabled' }}
@@ -134,7 +141,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 <Typography fontSize={12} color="#919eab">
                   {item.label}
                 </Typography>
-                <Tooltip title="Copy Text " arrow placement="bottom">
+                <Tooltip title="Copy event_id" arrow placement="bottom">
                   <IconButton
                     edge="end"
                     sx={{ color: 'text.disabled' }}
@@ -148,27 +155,8 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-      <TableCell>{ }</TableCell>
-      <TableCell>
-        <Stack spacing={2} direction="row" alignItems="center">
-          { }
-        </Stack>
-      </TableCell>
-
-      {/* // this section dialog section button popup */}
       <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
         <FullScreenDialog />
-        {/* <Button variant="outlined" color="success" size="small" sx={{ fontSize: '12px' }}>
-          Attempt : 1
-        </Button> */}
-        {/* <IconButton
-          color={collapse.value ? 'inherit' : 'default'}
-          onClick={collapse.onToggle}
-          sx={{ ...(collapse.value && { bgcolor: 'action.hover' }) }}
-        >
-          <Iconify icon="eva:arrow-ios-downward-fill" />
-        </IconButton> */}
-
         <IconButton
           sx={{ mt: -0.2 }}
           color={popover.open ? 'inherit' : 'default'}
@@ -177,15 +165,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           <Iconify icon="eva:more-vertical-fill" />
         </IconButton>
       </TableCell>
-
-      {/* <TableCell align="center"> </TableCell> */}
     </TableRow>
   );
 
   const renderSecondary = (
     <TableRow>
       <TableCell sx={{ p: 0, border: 'none' }} colSpan={8}>
-        {/* Adjust colSpan according to the number of columns in your table */}
         <Collapse
           in={collapse.value}
           timeout="auto"
@@ -215,8 +200,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     mt: 0.5,
                   }}
                 />
-                {/* <div>x{item.quantity} </div> */}
-                {/* <Box sx={{ width: 110, textAlign: 'right' }}>{fCurrency(item.price)}</Box> */}
               </Stack>
             ))}
           </Paper>

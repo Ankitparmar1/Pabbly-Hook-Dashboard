@@ -48,11 +48,10 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_REQUEST = [{ value: 'all', label: 'All' }, ...ORDER_REQUEST_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'STATUS/DATE' },
-  { id: 'name', label: 'CONNECTIONS' },
-  { id: 'totalAmount', label: 'REQUEST ID', align: 'right' },
-  // { id: 'status', label: 'Action' },
-  // { id: '', label: '', align: 'right' }, // Add an empty column for right alignment
+  { id: 'orderNumber', label: (<Tooltip title="Status and date of the request." placement='top'>STATUS/DATE</Tooltip>) },
+  { id: 'name', label: (<Tooltip title="Name of the connections." placement='top'>CONNECTIONS</Tooltip>) },
+  { id: 'totalAmount', label: (<Tooltip title="Status of the request." placement='top'>Request </Tooltip>), align: 'right' },
+
 ];
 
 // ----------------------------------------------------------------------
@@ -156,22 +155,34 @@ export function OrderListView() {
                 value={tab.value}
                 label={tab.label}
                 icon={
-                  <Label
-                    variant={
-                      ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
-                      'soft'
+                  <Tooltip
+                    title={
+                      tab.value === 'Accepted'
+                        ? 'These are the accepted requests'
+                        : tab.value === 'Blocked'
+                          ? 'These are the blocked requests'
+                          : ''
                     }
-                    color={
-                      (tab.value === 'Accepted' && 'success') ||
-                      (tab.value === 'Blocked' && 'error') ||
-                      'default'
-
-                    }
+                    arrow
+                    placement='top'
+                    disableHoverListener={tab.value !== 'Accepted' && tab.value !== 'Blocked'}
                   >
-                    {['accepted', 'pending', 'blocked', 'scheduled'].includes(tab.value)
-                      ? tableData.filter((user) => user.status === tab.value).length
-                      : tableData.length}
-                  </Label>
+                    <Label
+                      variant={
+                        ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
+                        'soft'
+                      }
+                      color={
+                        (tab.value === 'Accepted' && 'success') ||
+                        (tab.value === 'Blocked' && 'error') ||
+                        'default'
+                      }
+                    >
+                      {['accepted', 'pending', 'blocked', 'scheduled'].includes(tab.value)
+                        ? tableData.filter((user) => user.status === tab.value).length
+                        : tableData.length}
+                    </Label>
+                  </Tooltip>
                 }
               />
             ))}

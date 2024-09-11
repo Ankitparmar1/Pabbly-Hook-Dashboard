@@ -48,13 +48,11 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: 'STATUS/DATE' },
-  { id: 'name', label: 'CONNECTION NAME ' },
-  { id: 'createdAt', label: 'REQUEST/EVENTS' },
-  { id: '', label: '', align: 'left' },
-  { id: '', label: '', align: 'left' },
-  { id: 'status', label: 'ATTEMPTS', align: 'right' },
-  { id: '', label: '', align: 'right' }, // Add an empty column for right alignment
+  { id: 'orderNumber', label: (<Tooltip title="Status and date of the event." placement='top'>STATUS/DATE</Tooltip>) },
+  { id: 'name', label: (<Tooltip title="Name of the connections." placement='top'>CONNECTIONS NAME</Tooltip>) },
+  { id: 'createdAt', label: (<Tooltip title="Request Id / Event Id." placement='top'>REQUEST/EVENTS</Tooltip>) },
+  { id: 'status', label: (<Tooltip title="All events id request,status history." placement='top'>ATTEMPTS</Tooltip>), align: 'right' },
+
 ];
 
 // ----------------------------------------------------------------------
@@ -157,22 +155,39 @@ export function OrderListView() {
                 value={tab.value}
                 label={tab.label}
                 icon={
-                  <Label
-                    variant={
-                      ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
-                      'soft'
+                  <Tooltip
+                    title={
+                      tab.value === 'success'
+                        ? 'These are successful requests'
+                        : tab.value === 'rejected'
+                          ? 'These are rejected requests'
+                          : tab.value === 'scheduled'
+                            ? 'These are scheduled requests'
+                            : ''
                     }
-                    color={
-                      (tab.value === 'success' && 'success') ||
-                      (tab.value === 'rejected' && 'error') ||
-                      (tab.value === 'scheduled' && 'info') ||
-                      'default'
+                    arrow
+                    placement='top'
+                    disableHoverListener={
+                      tab.value !== 'success' && tab.value !== 'rejected' && tab.value !== 'scheduled'
                     }
                   >
-                    {['success', 'pending', 'rejected', 'scheduled'].includes(tab.value)
-                      ? tableData.filter((user) => user.status === tab.value).length
-                      : tableData.length}
-                  </Label>
+                    <Label
+                      variant={
+                        ((tab.value === 'all' || tab.value === filters.state.status) && 'filled') ||
+                        'soft'
+                      }
+                      color={
+                        (tab.value === 'success' && 'success') ||
+                        (tab.value === 'rejected' && 'error') ||
+                        (tab.value === 'scheduled' && 'info') ||
+                        'default'
+                      }
+                    >
+                      {['success', 'pending', 'rejected', 'scheduled'].includes(tab.value)
+                        ? tableData.filter((user) => user.status === tab.value).length
+                        : tableData.length}
+                    </Label>
+                  </Tooltip>
                 }
               />
             ))}
@@ -193,7 +208,7 @@ export function OrderListView() {
             />
           )}
 
-          <Box sx={{ position: 'relative', width: '100.65%' }}>
+          <Box sx={{ position: 'relative', width: '100%' }}>
             <TableSelectedAction
               dense={table.dense}
               numSelected={table.selected.length}
@@ -213,7 +228,7 @@ export function OrderListView() {
               }
             />
 
-            <Scrollbar sx={{ minHeight: 444, width: '103%' }}>
+            <Scrollbar sx={{ minHeight: 444, width: '100%' }}>
               <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '100%' }}>
                 <TableHeadCustom
                   order={table.order}

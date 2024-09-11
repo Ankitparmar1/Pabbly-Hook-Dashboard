@@ -11,10 +11,9 @@ import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import TextField from '@mui/material/TextField';
 import { DatePicker } from '@mui/x-date-pickers';
-// import InputLabel from '@mui/material/InputLabel';
 import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
-import { FormLabel, Typography } from '@mui/material';
+import { Tooltip, FormLabel, Typography } from '@mui/material';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
@@ -56,7 +55,6 @@ export function OrderTableToolbar({ filters, onResetPage }) {
   };
 
   const handleSubmit = () => {
-    // Your form submission logic here
     console.log('Form submitted!');
   };
 
@@ -87,34 +85,35 @@ export function OrderTableToolbar({ filters, onResetPage }) {
           sx={{ width: 1 }}
         >
           <Typography>
-            <b> Events </b>
+            <Tooltip title="List of all event requests and there status." placement='top'><b> Events </b></Tooltip>
           </Typography>
-
-          <IconButton
-            onClick={popover.onOpen}
-            sx={{
-              position: 'relative',
-              '&:hover': {
-                backgroundColor: 'transparent', // Ensures there's no background ellipse
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 2,
-                  left: 0,
-                  width: '100%',
-                  height: '80%',
-                  backgroundColor: '#919eab14', // Square background on hover
-                  borderRadius: '5px', // Ensures the shape is square, not rounded
-                  zIndex: -1, // Places the background behind the content
+          <Tooltip title="Filter requests by status or name.">
+            <IconButton
+              onClick={popover.onOpen}
+              sx={{
+                position: 'relative',
+                '&:hover': {
+                  backgroundColor: 'transparent', // Ensures there's no background ellipse
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 2,
+                    left: 0,
+                    width: '100%',
+                    height: '80%',
+                    backgroundColor: '#919eab14', // Square background on hover
+                    borderRadius: '5px', // Ensures the shape is square, not rounded
+                    zIndex: -1, // Places the background behind the content
+                  },
                 },
-              },
-            }}
-          >
-            <Iconify icon="solar:filter-bold" sx={{ color: 'black' }} />
-            <Typography sx={{ color: 'black', fontSize: '13px', ml: 1, fontWeight: '400px' }}>
-              Filter
-            </Typography>
-          </IconButton>
+              }}
+            >
+              <Iconify icon="solar:filter-bold" sx={{ color: 'black' }} />
+              <Typography sx={{ color: 'black', fontSize: '13px', ml: 1, fontWeight: '400px' }}>
+                Filter
+              </Typography>
+            </IconButton>
+          </Tooltip>
         </Stack>
       </Stack>
 
@@ -161,7 +160,7 @@ export function OrderTableToolbar({ filters, onResetPage }) {
                   </Grid>
                 </Grid>
 
-                {/* Right Side - Form Controls */}
+
                 <Grid item xs={12} sm={6}>
                   <Grid container spacing={1} direction="column">
                     <Grid item xs={12}>
@@ -214,8 +213,6 @@ export function OrderTableToolbar({ filters, onResetPage }) {
                   </Grid>
                 </Grid>
               </Grid>
-
-              {/* Apply Filter Button */}
               <Grid item xs={12} sx={{ display: 'flex', justifyContent: 'flex-end', }}>
                 <Button variant="contained" onClick={handleSubmit} size="small">
                   Apply Filter

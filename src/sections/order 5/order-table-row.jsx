@@ -74,11 +74,11 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
   const renderPrimary = (
     <TableRow hover selected={selected}>
       <TableCell padding="checkbox">
-        <Checkbox
+        <Tooltip title="Select"><Checkbox
           checked={selected}
           onClick={onSelectRow}
           inputProps={{ id: `row-checkbox-${row.id}`, 'aria-label': `Row checkbox` }}
-        />
+        /></Tooltip>
       </TableCell>
 
       <TableCell>
@@ -90,17 +90,30 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Label
-              size="small"
-              variant="soft"
-              color={
-                (row.status === 'Accepted' && 'success') ||
-                (row.status === 'Blocked' && 'error') ||
-                'default'
+            <Tooltip
+              title={
+                row.status === 'Accepted'
+                  ? 'This is an accepted request'
+                  : row.status === 'Blocked'
+                    ? 'This request is blocked'
+                    : ''
               }
+              arrow
+              placement='top'
+              disableHoverListener={row.status !== 'Accepted' && row.status !== 'Blocked'}
             >
-              {row.status}
-            </Label>
+              <Label
+                size="small"
+                variant="soft"
+                color={
+                  (row.status === 'Accepted' && 'success') ||
+                  (row.status === 'Blocked' && 'error') ||
+                  'default'
+                }
+              >
+                {row.status}
+              </Label>
+            </Tooltip>
             <Box
               component="span"
               sx={{ color: 'text.disabled', mt: 1, fontSize: '12px', fontWeight: 400 }}
@@ -110,7 +123,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           </Stack>
         </Stack>
       </TableCell>
-
       <TableCell>
         <Box fontSize={14}>Ankit Singh Parmar</Box>
       </TableCell>
@@ -125,7 +137,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Tooltip title="Copy Text " arrow placement="bottom">
+                <Tooltip title="Copy request_id " arrow placement="bottom">
                   <IconButton
                     edge="end"
                     sx={{ color: 'text.disabled' }}

@@ -32,12 +32,14 @@ export function FullScreenDialog() {
       </Button>
 
       <Drawer
-        PaperProps={{sx: {
-      width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
-      '@media (max-width: 300px)': {
-        padding: '16px',
-      },
-    } }}
+        PaperProps={{
+          sx: {
+            width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
+            '@media (max-width: 300px)': {
+              padding: '16px',
+            },
+          }
+        }}
         anchor="right"
         open={dialog.value}
         onClose={dialog.onFalse}
@@ -51,23 +53,19 @@ export function FullScreenDialog() {
             display="flex"
           >
             <Toolbar>
-            <IconButton
-              color="inherit"
-              edge="start"
-              sx={{
-                position: 'absolute',
-                top: 12, // Adjust top position as needed
-                right: 28, // Adjust right position as needed
-              }}
-              onClick={dialog.onFalse}
-            >
-              <Iconify icon="mingcute:close-line" />
-            </IconButton>
-            {/* You can uncomment this Button if you need a Save button */}
-            {/* <Button autoFocus color="inherit" variant="contained" onClick={dialog.onFalse}>
-            Save
-          </Button> */}
-          </Toolbar>
+              <IconButton
+                color="inherit"
+                edge="start"
+                sx={{
+                  position: 'absolute',
+                  top: 12, // Adjust top position as needed
+                  right: 28, // Adjust right position as needed
+                }}
+                onClick={dialog.onFalse}
+              >
+                <Iconify icon="mingcute:close-line" />
+              </IconButton>
+            </Toolbar>
             <Typography
               sx={{
                 mt: -6.5,
@@ -166,148 +164,75 @@ export function FullScreenDialog() {
               <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
                 <Typography variant="body2">Body</Typography>
               </Grid>
-              <Grid item xs={12} sm={8} md={15} lg={10} xl={10}>
-                <Grid item xs={12} sm={8} md={15} lg={10} xl={10}>
-                  <Box
-                    sx={{
-                      position: 'relative',
-                      maxHeight: 400,
-                      // overflowY: 'auto',
-                      // border: '1px solid #ccc',
-                      borderRadius: 2,
-                    }}
-                  >
-                    <TextField
-                      InputProps={{
-                        endAdornment: (
-                          <IconButton
-                            edge="end"
-                            sx={{
-                              position: 'absolute',
-                              top: 6, // Adjust as needed
-                              right: 40, // Adjust as needed
-                              color: 'text.disabled',
-                            }}
-                            onClick={() =>
-                              navigator.clipboard.writeText((request, context) => {
-                                // Initialize a counter
-                                let itemCounter = 0;
-                                // Process a list of items
-                                request.payload.items = request.payload.items || [];
-                                request.payload.items.forEach((item) => {
-                                  if (item.status === 'active') {
-                                    itemCounter += 1; // Avoiding ++ operator
-                                    item.updated_at = new Date().toISOString();
-                                  } else {
-                                    item.status = 'inactive';
-                                  }
-                                });
-
-                                // Add a summary field
-                                request.payload.summary = {
-                                  activeItemCount: itemCounter,
-                                  totalItems: request.payload.items.length,
-                                };
-
-                                // Add a new header
-                                request.headers['X-Item-Count'] = itemCounter.toString();
-
-                                // Process query parameters
-                                request.queryParams.processedAt = new Date().toISOString();
-
-                                // Error handling for missing fields
-                                if (!request.payload.items.length) {
-                                  throw new Error('No items to process');
-                                }
-
-                                return request;
-                              })
-                            }
-                          >
-                            <Tooltip title="Copy Text " arrow placement="bottom">
-                              <div>
-                                <Iconify width={17} icon="solar:copy-bold" />
-                              </div>
-                            </Tooltip>
-                          </IconButton>
-                        ),
-                      }}
-                      disabled
-                      value={`(request, context) => {
-  // Initialize a counter
-  let itemCounter = 0;
-  // Process a list of items
-  request.payload.items = request.payload.items || [];
-  request.payload.items.forEach(item => {
-  if (item.status === 'active') {
-  itemCounter++;
-  item.updated_at = new Date().toISOString();
-  } else {
-  item.status = 'inactive';
-  }
-  });
-
-  // Add a summary field
-  request.payload.summary = {
-  activeItemCount: itemCounter,
-  totalItems: request.payload.items.length
-  };
-
-  // Add a new header
-  request.headers['X-Item-Count'] = itemCounter.toString();
-
-  // Process query parameters
-  request.queryParams.processedAt = new Date().toISOString();
-
-  // Error handling for missing fields
-  if (!request.payload.items.length) {
-  throw new Error('No items to process');
-  }
-
-  return request;
-  }`}
-                      fullWidth
-                      variant="outlined"
-                      multiline
-                      minRows={10} // Minimum number of rows
-                      maxRows={10} // Maximum number of rows
-                      sx={{
-                        width: '120%', // Adjust width as needed
-                        '& .MuiInputBase-root': {
-                          fontSize: '14px', // Adjust font size as needed
-                          height: 'auto', // Auto height
-                          maxHeight: '500px', // Maximum height for the input box
-                        },
-                      }}
-                    />
-                  </Box>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
-                <Typography variant="body2">Query Params</Typography>
-              </Grid>
-              <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
+              <Grid item xs={12} sm={8} md={15} lg={12} xl={10}>
                 <TextField
                   disabled
-                  value="NA"
+                  value={`(request, context) => {
+                        // Initialize a counter
+                        let itemCounter = 0;
+                        // Process a list of items
+                        request.payload.items = request.payload.items || [];
+                        request.payload.items.forEach(item => {
+                        if (item.status === 'active') {
+                        itemCounter++;
+                        item.updated_at = new Date().toISOString();
+                        } else {
+                        item.status = 'inactive';
+                        }
+                        });
+
+                        // Add a summary field
+                        request.payload.summary = {
+                        activeItemCount: itemCounter,
+                        totalItems: request.payload.items.length
+                        };
+
+                        // Add a new header
+                        request.headers['X-Item-Count'] = itemCounter.toString();
+
+                        // Process query parameters
+                        request.queryParams.processedAt = new Date().toISOString();
+
+                        // Error handling for missing fields
+                        if (!request.payload.items.length) {
+                        throw new Error('No items to process');
+                        }
+
+                        return request;
+                        }`}
                   fullWidth
                   variant="outlined"
-                  size="small"
-                  InputProps={{
-                    endAdornment: (
-                      <Tooltip title="Copy Text " arrow placement="bottom">
-                        <IconButton
-                          edge="end"
-                          sx={{ color: 'text.disabled' }}
-                          onClick={() => navigator.clipboard.writeText('NA')}
-                        >
-                          <Iconify sx={{ mt: -0.2 }} width={15} icon="solar:copy-bold" />
-                        </IconButton>
-                      </Tooltip>
-                    ),
-                  }}
+                  size="auto"
+                  multiline
+                  minRows={3} // Minimum number of rows
+                  maxRows={10} // Maximum number of rows
                 />
               </Grid>
+            </Grid>
+            <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
+              <Typography variant="body2">Query Params</Typography>
+            </Grid>
+            <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
+              <TextField
+                disabled
+                value="NA"
+                fullWidth
+                variant="outlined"
+                size="small"
+                InputProps={{
+                  endAdornment: (
+                    <Tooltip title="Copy Text " arrow placement="bottom">
+                      <IconButton
+                        edge="end"
+                        sx={{ color: 'text.disabled' }}
+                        onClick={() => navigator.clipboard.writeText('NA')}
+                      >
+                        <Iconify sx={{ mt: -0.2 }} width={15} icon="solar:copy-bold" />
+                      </IconButton>
+                    </Tooltip>
+                  ),
+                }}
+              />
             </Grid>
           </Box>
         </Card>
