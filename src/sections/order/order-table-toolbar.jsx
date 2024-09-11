@@ -11,11 +11,10 @@ import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
-import { FormLabel, Typography } from '@mui/material';
+import {Tooltip, FormLabel, Typography } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
-
 
 // ----------------------------------------------------------------------
 const filterStatusOptions = [
@@ -80,10 +79,13 @@ export function OrderTableToolbar({ filters, onResetPage }) {
         sx={{ p: 2.5, pr: { xs: 2.5, md: 3 } }}
       >
         <Stack direction="row" mt={1} justifyContent="space-between" spacing={1} flexGrow={1} sx={{ width: 1 }}>
+        <Tooltip title="Folder Name: Home" arrow placement='top'>
           <Typography mt={0.8}>
             <b> Home</b>
           </Typography>
+          </Tooltip>
 
+          <Tooltip title="Filter connection by status or folders." arrow placement='top'>
           <IconButton
             onClick={popover.onOpen}
             sx={{
@@ -109,6 +111,7 @@ export function OrderTableToolbar({ filters, onResetPage }) {
               Filter
             </Typography>
           </IconButton>
+          </Tooltip>
         </Stack>
       </Stack>
 
@@ -123,7 +126,7 @@ export function OrderTableToolbar({ filters, onResetPage }) {
           <Box sx={{ padding: 1 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
-                <h4 style={{ padding: 5, margin: 0 }}>Filter Events</h4>
+                <h4 style={{ padding: 5, margin: 0 }}>Filter Home</h4>
               </Grid>
 
               <Grid container spacing={2}>

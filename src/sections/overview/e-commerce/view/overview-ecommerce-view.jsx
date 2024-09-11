@@ -44,6 +44,25 @@ import { CustomStyling } from 'src/sections/tree-view/custom-styling';
 
 import { EcommerceWelcome } from '../ecommerce-welcome';
 
+const selectfolder = [
+  {
+    value: 'USD',
+    label: 'Main',
+  },
+  {
+    value: 'EUR',
+    label: 'Hello',
+  },
+  {
+    value: 'BTC',
+    label: 'Subtree with children',
+  },
+  {
+    value: 'JPY',
+    label: 'world',
+  },
+];
+
 const currencies = [
   {
     value: 'USD',
@@ -264,12 +283,12 @@ export function OverviewEcommerceView() {
           <Card sx={{ pl: 3, pr: 3, pt: 3, pb: 2 }}>
             <Typography sx={{ fontSize: '18px', fontWeight: '600', }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Tooltip title="Manage folders" arrow placement='top'>
                 Folder
+                </Tooltip>
                 <IconButton onClick={handledopen} edge="end">
                   <Tooltip title="Create a new folder." arrow placement='top'>
-                    <div>
                       <Iconify icon="icon-park-solid:add" style={{ color: 'black' }} width="12" />
-                    </div>
                   </Tooltip>
                 </IconButton>
                 <Dialog open={folderopen} onClose={folderclose}>
@@ -364,12 +383,12 @@ export function OverviewEcommerceView() {
           <Card sx={{ pl: 3, pr: 3, pt: 1.5, pb: 1 }}>
             <Typography sx={{ fontSize: '18px', fontWeight: '600', mb: 1 }}>
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <Tooltip title="Manage folders" arrow placement='top'>
                 Folder
+                </Tooltip>
                 <IconButton onClick={handledopen} edge="end">
                   <Tooltip title="Create a new folder." arrow placement='top'>
-                    <div>
                       <Iconify icon="icon-park-solid:add" style={{ color: 'black' }} width="12" />
-                    </div>
                   </Tooltip>
                 </IconButton>
                 <Dialog open={dopen} onClose={handledlose}>
@@ -398,20 +417,22 @@ export function OverviewEcommerceView() {
                     <Typography sx={{ mt: 1 }}>Select Folder</Typography>
 
                     <TextField
-                      fullWidth
-                      type="text"
-                      margin="dense"
-                      variant="outlined"
-                      label="Home"
-                      helperText={
-                        <>
-                          Select the folder or subfolder where you want to create the connection.{' '}
-                          <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}>
-                            Learn more
-                          </a>
-                        </>
-                      }
-                    />
+                     id="outlined-select-currency"
+                     select
+                     fullWidth
+                     label="Select"
+                     margin="dense"
+                     defaultValue="USD"
+                     helperText={<> Select the folder or subfolder where you want to create the connection.{' '}
+                     <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}> Learn more </a> </>}
+                     >
+                    {selectfolder.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                    </MenuItem>
+                     ))}
+                    </TextField>
+
                   </DialogContent>
 
                   <DialogActions>
@@ -511,12 +532,12 @@ export function OverviewEcommerceView() {
               <Typography sx={{ mb: 1 }}>HTTP Methods</Typography>
 
               <FormControlLabel label="GET" control={<Checkbox size="normal" defaultChecked />} />
-              <FormControlLabel label="POST" control={<Checkbox size="normal" defaultChecked />} />
-              <FormControlLabel label="PUT" control={<Checkbox size="normal" defaultChecked />} />
-              <FormControlLabel label="PATCH" control={<Checkbox size="normal" defaultChecked />} />
+              <FormControlLabel label="POST" control={<Checkbox size="normal" Checked />} />
+              <FormControlLabel label="PUT" control={<Checkbox size="normal" Checked />} />
+              <FormControlLabel label="PATCH" control={<Checkbox size="normal" Checked />} />
               <FormControlLabel
                 label="DELETE"
-                control={<Checkbox size="normal" defaultChecked />}
+                control={<Checkbox size="normal" Checked />}
               />
 
               <Typography sx={{ mb: 2, color: 'text.secondary', fontSize: '13px', mt: 1 }}>

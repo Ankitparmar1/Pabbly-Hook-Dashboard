@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 import { styled } from '@mui/material/styles';
 import { RichTreeView } from '@mui/x-tree-view/RichTreeView';
-import { Popover, MenuItem, IconButton } from '@mui/material';
 import { TreeItem, treeItemClasses } from '@mui/x-tree-view/TreeItem';
+import { Popover, Tooltip, MenuItem, IconButton, } from '@mui/material';
 
 import { varAlpha, stylesMode } from 'src/theme/styles';
 
@@ -64,7 +64,9 @@ const StyledTreeItem = styled((props) => {
             width: '100%',
           }}
         >
-          {props.label}
+          <Tooltip title={`Folder Name: ${props.label}`} placement="top" arrow>
+            <span>{props.label}</span>
+          </Tooltip>
           <IconButton color={popoverOpen ? 'inherit' : 'default'} onClick={handlePopoverOpen}>
             <Iconify icon="eva:more-vertical-fill" />
           </IconButton>
@@ -76,24 +78,20 @@ const StyledTreeItem = styled((props) => {
             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
           >
             <MenuItem sx={{ display: 'flex', alignItems: 'center' }} onClick={handlePopoverClose}>
-              {' '}
               <Iconify sx={{ mr: 1 }} icon="mingcute:add-fill" />
-              Create Folder{' '}
+              Create Folder
             </MenuItem>
             <MenuItem sx={{ display: 'flex', alignItems: 'center' }} onClick={handlePopoverClose}>
-              {' '}
               <Iconify sx={{ mr: 1 }} icon="fluent:edit-20-filled" />
               Rename
             </MenuItem>
             <MenuItem sx={{ display: 'flex', alignItems: 'center' }} onClick={handlePopoverClose}>
-              {' '}
-              <Iconify sx={{ mr: 1 }} icon="solar:share-bold" /> Share{' '}
+              <Iconify sx={{ mr: 1 }} icon="solar:share-bold" /> Share
             </MenuItem>
             <MenuItem
               sx={{ display: 'flex', alignItems: 'center', color: '#ff5630' }}
               onClick={handlePopoverClose}
             >
-              {' '}
               <Iconify sx={{ mr: 1 }} color="#ff5630" icon="solar:trash-bin-trash-bold" />
               Delete
             </MenuItem>

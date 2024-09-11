@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box';
+import { Tooltip } from '@mui/material';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import TableHead from '@mui/material/TableHead';
@@ -36,6 +37,7 @@ export function TableHeadCustom({
       <TableRow>
         {onSelectAllRows && (
           <TableCell padding="checkbox">
+          <Tooltip title="Select all" arrow placement='top'>
             <Checkbox
               indeterminate={!!numSelected && numSelected < rowCount}
               checked={!!rowCount && numSelected === rowCount}
@@ -45,6 +47,7 @@ export function TableHeadCustom({
                 'aria-label': 'select all rows',
               }}
             />
+            </Tooltip>
           </TableCell>
         )}
 

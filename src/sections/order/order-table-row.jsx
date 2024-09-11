@@ -14,7 +14,7 @@ import { useBoolean } from 'src/hooks/use-boolean';
 
 // import { fDate, fTime } from 'src/utils/format-time';
 
-import { IconButton, Typography } from '@mui/material';
+import { Tooltip, IconButton, Typography } from '@mui/material';
 
 import { Label } from 'src/components/label';
 import { Iconify } from 'src/components/iconify';
@@ -29,41 +29,47 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
   const renderPrimary = (
     <TableRow hover selected={selected}>
       <TableCell padding="checkbox">
+      <Tooltip title="Select" arrow placement='top'>
         <Checkbox
           checked={selected}
           onClick={onSelectRow}
           inputProps={{ id: `row-checkbox-${row.id}`, 'aria-label': `Row checkbox` }}
         />
+        </Tooltip>
       </TableCell>
 
       <TableCell>
-        <Stack spacing={2} direction="row" alignItems="center">
-          <Stack
-            sx={{
-              typography: 'body2',
-              flex: '1 1 auto',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Label
-              variant="soft"
-              color={
-                (row.status === 'Active' && 'success') ||
-                (row.status === 'Inactive' && 'error') ||
-                'default'
-              }
-            >
-              {row.status}
-            </Label>
-            <Box
-              component="span"
-              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
-            >
-              Aug 8,2024 15:25:33.366
-            </Box>
-          </Stack>
-        </Stack>
-      </TableCell>
+  <Stack spacing={2} direction="row" alignItems="center">
+    <Stack
+      sx={{
+        typography: 'body2',
+        flex: '1 1 auto',
+        alignItems: 'flex-start',
+      }}
+    >
+      <Tooltip placement='top' arrow title={row.status === 'Active' ? 'Connection is Active' : 'Connection is Inactive'}>
+        <Label
+          variant="soft"
+          color={
+            (row.status === 'Active' && 'success') ||
+            (row.status === 'Inactive' && 'error') ||
+            'default'
+          }
+        >
+          {row.status}
+        </Label>
+      </Tooltip>
+      <Box
+        component="span"
+        sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
+      >
+      <Tooltip title="Connection Date: Aug 8, 2024 15:25:33.366" arrow placement='top'>
+        Aug 8, 2024 15:25:33.366
+        </Tooltip>
+      </Box>
+    </Stack>
+  </Stack>
+</TableCell>
 
       <TableCell>
         <Stack spacing={3} direction="row" alignItems="center">
@@ -79,10 +85,16 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 style={{ textDecoration: 'none', color: '#078dee' }}
                 href="http://localhost:3030/dashboard/"
               >
+              <Tooltip title="Connection Name: Rajpal Singh Tomar" arrow placement='top'>
                 Rajpal Singh Tomar
+                </Tooltip>
               </a>
             </Box>
-            <Typography sx={{ color: ' #919eab ', fontSize: '14px' }}>Ankit</Typography>
+            <Typography sx={{ color: ' #919eab ', fontSize: '14px' }}>
+            <Tooltip title="Folder Name: Ankit" arrow placement='top'>
+            Ankit
+            </Tooltip>
+            </Typography>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
@@ -108,7 +120,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 style={{ textDecoration: 'none', color: '#078dee' }}
                 href="http://localhost:3030/dashboard/four"
               >
+              <Tooltip title="Status of the requests" arrow placement='top'>
                 0 Requests
+                </Tooltip>
               </a>
             </Box>
 
@@ -120,7 +134,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 style={{ textDecoration: 'none', color: '#919eab' }}
                 href="http://localhost:3030/dashboard/five"
               >
+              <Tooltip title="Status of the events" arrow placement='top'>
                 0 events
+                </Tooltip>
               </a>
             </Box>
 
