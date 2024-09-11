@@ -37,20 +37,16 @@ export function TableHeadCustom({
       <TableRow>
         {onSelectAllRows && (
           <TableCell padding="checkbox">
-<<<<<<< HEAD
-          <Tooltip title="Select all" arrow placement='top'>
-=======
             <Tooltip title="Select all" arrow placement="top">
->>>>>>> cae9f532cc70ceec131223e8e4b490ede0614ea1
-            <Checkbox
-              indeterminate={!!numSelected && numSelected < rowCount}
-              checked={!!rowCount && numSelected === rowCount}
-              onChange={(event) => onSelectAllRows(event.target.checked)}
-              inputProps={{
-                name: 'select-all-rows',
-                'aria-label': 'select all rows',
-              }}
-            />
+              <Checkbox
+                indeterminate={!!numSelected && numSelected < rowCount}
+                checked={!!rowCount && numSelected === rowCount}
+                onChange={(event) => onSelectAllRows(event.target.checked)}
+                inputProps={{
+                  name: 'select-all-rows',
+                  'aria-label': 'select all rows',
+                }}
+              />
             </Tooltip>
           </TableCell>
         )}

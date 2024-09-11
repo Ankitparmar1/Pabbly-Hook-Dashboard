@@ -48,10 +48,10 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: (<Tooltip title="Status and date of the event." placement='top'>STATUS/DATE</Tooltip>) },
-  { id: 'name', label: (<Tooltip title="Name of the connections." placement='top'>CONNECTIONS NAME</Tooltip>) },
-  { id: 'createdAt', label: (<Tooltip title="Request Id / Event Id." placement='top'>REQUEST/EVENTS</Tooltip>) },
-  { id: 'status', label: (<Tooltip title="All events id request,status history." placement='top'>ATTEMPTS</Tooltip>), align: 'right' },
+  { id: 'orderNumber', label: (<Tooltip title="Status and date of the event." arrow placement='top'>STATUS/DATE</Tooltip>) },
+  { id: 'name', label: (<Tooltip title="Name of the connections." arrow placement='top'>CONNECTIONS NAME</Tooltip>) },
+  { id: 'createdAt', label: (<Tooltip title="Request Id / Event Id." arrow placement='top'>REQUEST/EVENTS</Tooltip>) },
+  { id: 'status', label: (<Tooltip title="All events id request,status history." arrow placement='top'>ATTEMPTS</Tooltip>), align: 'right' },
 
 ];
 
