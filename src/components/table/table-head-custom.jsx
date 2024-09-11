@@ -37,7 +37,11 @@ export function TableHeadCustom({
       <TableRow>
         {onSelectAllRows && (
           <TableCell padding="checkbox">
+<<<<<<< HEAD
           <Tooltip title="Select all" arrow placement='top'>
+=======
+            <Tooltip title="Select all" arrow placement="top">
+>>>>>>> cae9f532cc70ceec131223e8e4b490ede0614ea1
             <Checkbox
               indeterminate={!!numSelected && numSelected < rowCount}
               checked={!!rowCount && numSelected === rowCount}
