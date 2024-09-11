@@ -112,7 +112,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
       </TableCell>
 
       <TableCell>
-        <Box fontSize={16}>Ankit Singh Parmar</Box>
+        <Box fontSize={14}>Ankit Singh Parmar</Box>
       </TableCell>
       <TableCell>
         <Stack spacing={2} direction="row" alignItems="center">
@@ -131,10 +131,10 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     sx={{ color: 'text.disabled' }}
                     onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
                   >
-                    <Iconify sx={{ mt: -0.2 }} width={17} icon="solar:copy-bold" />
+                    <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
-                <Typography onClick={handleOpenDrawer} fontSize={16} color="283746">
+                <Typography onClick={handleOpenDrawer} fontSize={14} color="283746">
                   {item.label}
                 </Typography>
               </Box>
