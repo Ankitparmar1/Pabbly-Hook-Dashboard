@@ -125,7 +125,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 <Typography fontSize={14} color="#1c252e">
                   {item.label}
                 </Typography>
-                <Tooltip title="Copy request_id " arrow placement="bottom">
+                <Tooltip title="Copy request_id " arrow placement="top">
                   <IconButton
                     edge="end"
                     sx={{ color: 'text.disabled' }}

@@ -48,9 +48,9 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_REQUEST = [{ value: 'all', label: 'All' }, ...ORDER_REQUEST_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: (<Tooltip title="Status and date of the request." placement='top'>STATUS/DATE</Tooltip>) },
-  { id: 'name', label: (<Tooltip title="Name of the connections." placement='top'>CONNECTIONS</Tooltip>) },
-  { id: 'totalAmount', label: (<Tooltip title="Status of the request." placement='top'>Request </Tooltip>), align: 'right' },
+  { id: 'orderNumber', label: (<Tooltip title="Status and date of the request." arrow placement='top'>STATUS/DATE</Tooltip>) },
+  { id: 'name', label: (<Tooltip title="Name of the connections." arrow placement='top'>CONNECTIONS</Tooltip>) },
+  { id: 'totalAmount', label: (<Tooltip title="Status of the request." arrow placement='top'>Request </Tooltip>), align: 'right' },
 
 ];
 

@@ -85,9 +85,9 @@ export function OrderTableToolbar({ filters, onResetPage }) {
           sx={{ width: 1 }}
         >
           <Typography>
-            <Tooltip title="List of all event requests and there status." placement='top'><b> Events </b></Tooltip>
+            <Tooltip arrow title="List of all event requests and there status." placement='top'><b> Events </b></Tooltip>
           </Typography>
-          <Tooltip title="Filter requests by status or name.">
+          <Tooltip placement='top' arrow title="Filter requests by status or name.">
             <IconButton
               onClick={popover.onOpen}
               sx={{
