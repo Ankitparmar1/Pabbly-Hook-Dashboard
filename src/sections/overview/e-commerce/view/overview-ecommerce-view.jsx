@@ -497,7 +497,7 @@ export function OverviewEcommerceView() {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <Tooltip title="Copy Text" arrow placement="bottom">
+                      <Tooltip title="Copy URL" arrow placement="bottom">
                       <IconButton edge="end" onClick={handleCopy}>
                         <Iconify width={18} icon="solar:copy-bold" />
                       </IconButton></Tooltip>

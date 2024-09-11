@@ -125,7 +125,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <Tooltip title="Copy Text " arrow placement="bottom">
+                <Tooltip title="Copy request_id " arrow placement="bottom">
                   <IconButton
                     edge="end"
                     sx={{ color: 'text.disabled' }}
@@ -283,9 +283,15 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '14px', fontWeight: 400 }}
           >
             req_66c87b54a2b7dcc1740d639
-            <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-              <Iconify width={18} icon="solar:copy-bold" />
-            </IconButton>
+            <Tooltip title="Copy request_id " arrow placement="bottom">
+                  <IconButton
+                    edge="end"
+                    sx={{ color: 'text.disabled' }}
+                    onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
+                  >
+                    <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
+                  </IconButton>
+                </Tooltip>
           </Typography>
         </AppBar>
         <Divider />
