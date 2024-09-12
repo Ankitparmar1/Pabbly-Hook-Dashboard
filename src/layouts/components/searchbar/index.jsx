@@ -3,6 +3,7 @@ import parse from 'autosuggest-highlight/parse';
 import match from 'autosuggest-highlight/match';
 
 import Box from '@mui/material/Box';
+import { Tooltip } from '@mui/material';
 import SvgIcon from '@mui/material/SvgIcon';
 import InputBase from '@mui/material/InputBase';
 import { useTheme } from '@mui/material/styles';
@@ -104,6 +105,7 @@ export function Searchbar({ data: navItems = [], sx, ...other }) {
   };
 
   const renderButton = (
+    <Tooltip title="You can search from here." arrow placement='left'>
     <Box
       display="flex"
       alignItems="center"
@@ -139,6 +141,7 @@ export function Searchbar({ data: navItems = [], sx, ...other }) {
         Search here for Connections, Requests, Events, or Tasks...
       </Label>
     </Box>
+    </Tooltip>
   );
 
   return (

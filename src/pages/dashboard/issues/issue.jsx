@@ -17,7 +17,7 @@ const metadata = { title: `Page two | Dashboard - ${CONFIG.site.name}` };
 
 export default function Page() {
   return (
-    <div style={{ backgroundColor: '#F3F7FA', width: '100%', height: '100vh' }}>
+    <div style={{ backgroundColor: '#F3F7FA', width: '100%', height: 'auto', minHeight: '100vh' }}>
       <Helmet>
         <title> {metadata.title}</title>
       </Helmet>

@@ -106,7 +106,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
 
 
       <TableCell>
-        <Stack spacing={2} direction="row" alignItems="left">
+        <Stack spacing={2} direction="row" alignItems="left" sx={{mr:3}}>
           <Stack
 
             sx={{
@@ -142,14 +142,17 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
 
 
           </Stack>
-          <Stack spacing={2} direction="row" alignItems="right">
+
+          <Stack spacing={2} direction="row"  alignItems="right">
+          <Stack>
             <IconButton
-              sx={{ mt: 2, ml: 0 }}
+              sx={{ mt: 0.5}}
               color={popover.open ? 'inherit' : 'default'}
               onClick={popover.onOpen}
             >
               <Iconify icon="eva:more-vertical-fill" />
             </IconButton>
+            </Stack>
           </Stack>
         </Stack>
       </TableCell>

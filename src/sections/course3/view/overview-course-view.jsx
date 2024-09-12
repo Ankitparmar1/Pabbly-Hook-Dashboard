@@ -45,7 +45,7 @@ export function OverviewCourseView() {
               }}
             >
               <div>
-                <Typography variant="h4">Issues</Typography>
+                <Typography sx={{mt:-0.2,mb:0.2}} variant="h4">Issues</Typography>
                 <Typography sx={{ color: 'text.secondary' }}>
                   The screen shows all your Issues. &nbsp;
                   <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}>

@@ -172,9 +172,9 @@ export function OrderListView() {
             />
           )}
 
-          <Box sx={{ position: 'relative', width: '102%' }}>
+          <Box sx={{ position: 'relative', width: '100%' }}>
             <TableSelectedAction
-              sx={{ width: '98%' }}
+              sx={{ width: '100%' }}
               dense={table.dense}
               numSelected={table.selected.length}
               rowCount={dataFiltered.length}
@@ -193,7 +193,7 @@ export function OrderListView() {
               }
             />
 
-            <Scrollbar sx={{ minHeight: 444, width: '100.65%' }}>
+            <Scrollbar sx={{ minHeight: 444, width: '100%' }}>
               <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '100%' }}>
                 <TableHeadCustom
                   order={table.order}

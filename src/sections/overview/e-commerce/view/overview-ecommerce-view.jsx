@@ -39,10 +39,11 @@ import { MotivationIllustration } from 'src/assets/illustrations';
 
 import { Iconify } from 'src/components/iconify';
 
-import { FormDialog } from 'src/sections/dialog-view/form-dialog';
+import { FormDialog } from 'src/sections/dialog-view/form-dialog1';
 import { CustomStyling } from 'src/sections/tree-view/custom-styling';
 
 import { EcommerceWelcome } from '../ecommerce-welcome';
+
 
 const selectfolder = [
   {
@@ -364,7 +365,12 @@ export function OverviewEcommerceView() {
 
         <Grid item xs={12} md={9} lg={9} sx={{ height: '100%' }}>
           <EcommerceWelcome
-            title={`No Connections found! \n `}
+            title={<Tooltip  title={
+                    <Typography style={{ fontSize: '12px', textAlign: 'center' }}>
+                      No existing connections. Create a new one using the steps below.
+                    </Typography>
+                  } arrow placement='top'>No Connections found!
+                   </Tooltip>}
             description="There may be no Connections in the folder or for the applied filter conditions. You can create a Connection by following the steps below-."
             step1=" Click on the 'Create Connection' button available in the top right section."
             step2=" Now select apps you want to integrate into the trigger and action step."
@@ -374,7 +380,7 @@ export function OverviewEcommerceView() {
                 <MotivationIllustration hideBackground />
               </div>
             </Tooltip>}
-            action={<FormDialog />}
+            action={<FormDialog/>}
             
           />
         </Grid>
@@ -392,7 +398,11 @@ export function OverviewEcommerceView() {
                   </Tooltip>
                 </IconButton>
                 <Dialog open={dopen} onClose={handledlose}>
-                  <DialogTitle>Create Folder</DialogTitle>
+                  <DialogTitle>
+                  <Tooltip title="Create a connection with a name and folder location." arrow placement='top'>
+                   Create Folder
+                   </Tooltip>
+                   </DialogTitle>
 
                   <DialogContent>
                     <Typography sx={{ mb: 0 }}>Folder Name</Typography>
@@ -403,7 +413,9 @@ export function OverviewEcommerceView() {
                       type="text"
                       margin="dense"
                       variant="outlined"
-                      label="Name of the Connection"
+                      placeholder='Name of the Connection'
+                      // label="Name of the Connection"
+                      // defaultValue="Name of the Connection"
                       helperText={
                         <>
                           Enter the name of the connection.{' '}
@@ -420,7 +432,7 @@ export function OverviewEcommerceView() {
                      id="outlined-select-currency"
                      select
                      fullWidth
-                     label="Select"
+                    //  label="Select"
                      margin="dense"
                      defaultValue="USD"
                      helperText={<> Select the folder or subfolder where you want to create the connection.{' '}
@@ -476,14 +488,14 @@ export function OverviewEcommerceView() {
             <CardHeader sx={{ mt: -1 }}
               title="Setup Connections"
               subheader={
-                <>
-                  Define where your events come from, and Webhook will provide a corresponding
-                  endpoint URL when your connection is created. Sources can be reused across
-                  multiple connections.{' '}
-                  <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}>
-                    Learn more
-                  </a>
-                </>
+                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                 Define where your events come from, and Webhook will provide a corresponding
+                 endpoint URL when your connection is created. Sources can be reused across
+                 multiple connections.{' '}
+                 <a href="#" style={{ color: '#078DEE', textDecoration: 'underline' }}>
+                   Learn more
+                 </a>
+                </Typography>
               }
             />
 
@@ -497,7 +509,8 @@ export function OverviewEcommerceView() {
                 type="email"
                 margin="dense"
                 variant="outlined"
-                label="Name of the Connection"
+                placeholder='Name of the Connection'
+                // label="Name of the Connection"
                 helperText="Enter the name of the connection."
               />
             </DialogContent>

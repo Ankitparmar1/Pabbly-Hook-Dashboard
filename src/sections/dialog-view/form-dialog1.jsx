@@ -53,8 +53,7 @@ export function FormDialog() {
       >
         <div>
           <Button
-            sx={{ mt: -1 }}
-            size='large'
+            sx={{ mt: 0 }}
             variant="contained"
             color="primary"
             onClick={dialog.onTrue}

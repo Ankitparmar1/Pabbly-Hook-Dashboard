@@ -1,6 +1,7 @@
 import { m } from 'framer-motion';
 
 import NoSsr from '@mui/material/NoSsr';
+import { Tooltip } from '@mui/material';
 import Avatar from '@mui/material/Avatar';
 import SvgIcon from '@mui/material/SvgIcon';
 import { useTheme } from '@mui/material/styles';
@@ -33,6 +34,7 @@ export function AccountButton({ open, photoURL, displayName, sx, ...other }) {
   );
 
   return (
+    <Tooltip title="View your account or manage your subscription." arrow placement='bottom'>
     <IconButton
       component={m.button}
       whileTap="tap"
@@ -56,5 +58,6 @@ export function AccountButton({ open, photoURL, displayName, sx, ...other }) {
         </AnimateAvatar>
       </NoSsr>
     </IconButton>
+    </Tooltip>
   );
 }
