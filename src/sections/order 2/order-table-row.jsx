@@ -87,7 +87,11 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             }}
           >
             <Box component="span">
+<<<<<<< HEAD
               <Tooltip title="Transformation ID " arrow placement="top">trs_66c87b54a2b7dc2c1740d639</Tooltip>
+=======
+            <Tooltip title="Transformation ID " arrow placement="top">trs_66c87b54a2b7dc2c1740d639</Tooltip>
+>>>>>>> e618a5881ee21c12249750eae8f091c62f3c029e
               <Tooltip title="Copy transformation_id " arrow placement="bottom">
                 <IconButton
                   edge="end"
@@ -108,6 +112,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
 
       <TableCell align="right">
         <Tooltip title="Tap to view full transformation details" arrow placement="top">
+<<<<<<< HEAD
           <Box
             component="span"
             sx={{ color: 'success.main', cursor: 'pointer' }}
@@ -115,26 +120,16 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {'(request, context) =>'}
           </Box></Tooltip>
-      </TableCell>
-
-      <TableCell align="right" sx={{ px: 1, whiteSpace: 'nowrap' }}>
-        {/* <Button variant="outlined" color="primary" size="small" sx={{ fontSize: '12px' }}>
-          Access inbox
-        </Button> */}
-        {/* <IconButton
-          color={collapse.value ? 'inherit' : 'default'}
-          onClick={collapse.onToggle}
-          sx={{ ...(collapse.value && { bgcolor: 'action.hover' }) }}
+=======
+        <Box
+          component="span"
+          sx={{ color: 'primary.main', cursor: 'pointer' }}
+          onClick={handleOpenDrawer}
         >
-          <Iconify icon="eva:arrow-ios-downward-fill" />
-        </IconButton> */}
-
-        {/* <IconButton color={popover.open ? 'inherit' : 'default'} onClick={popover.onOpen}>
-          <Iconify icon="eva:more-vertical-fill" />
-        </IconButton> */}
+          {'(transformation, context) =>'}
+        </Box></Tooltip>
+>>>>>>> e618a5881ee21c12249750eae8f091c62f3c029e
       </TableCell>
-
-      {/* <TableCell align="center"> </TableCell> */}
     </TableRow>
   );
 
@@ -294,7 +289,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         <Divider />
         <Box sx={{ width: '90%', mt: 2, ml: 5, bgcolor: '#fff', padding: 2 }}>
           <Typography variant="h6" gutterBottom>
+          <Tooltip title="Transformation status" arrow placement="top">
             Transformation Details
+            </Tooltip>
           </Typography>
           <Divider />
           <Grid container spacing={2} mt={2}>
@@ -350,6 +347,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               <Typography variant="body2">Transformation Code</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
+<<<<<<< HEAD
               <Box
                 sx={{
                   position: 'relative',
@@ -385,11 +383,48 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                   wrapLongLines  // Ensure code lines don't overflow horizontally
                 >
                   {`(request, context) => {
+=======
+  <Box 
+    sx={{
+      position: 'relative',
+      maxHeight: 400,
+      overflowY: 'auto',  // Control vertical overflow
+      overflowX: 'hidden',  // Hide horizontal overflow to avoid scroll
+      border: '1px solid #E5E8EB',
+      borderRadius: 1,
+      // Custom scrollbar styling
+      '&::-webkit-scrollbar': {
+        width: '8px',  // Set the width of the scrollbar
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: '#888',  // Color of the scrollbar thumb
+        borderRadius: '10px',  // Border radius for rounded scrollbar
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+        backgroundColor: '#555',  // Color on hover
+      },
+      '&::-webkit-scrollbar-track': {
+        backgroundColor: '#f1f1f1',  // Background of the scrollbar track
+        borderRadius: '10px',  // Border radius for the track
+      },
+    }}
+  >
+    <SyntaxHighlighter
+      language="javascript"
+      customStyle={{ 
+        backgroundColor: 'transparent', 
+        wordWrap: 'break-word',  // Ensure long lines wrap
+        whiteSpace: 'pre-wrap',  // Maintain formatting while allowing wrapping
+      }}
+      wrapLongLines  // Ensure code lines don't overflow horizontally
+    >
+      {`(transformation, context) => {
+>>>>>>> e618a5881ee21c12249750eae8f091c62f3c029e
     // Initialize a counter
     let itemCounter = 0;
     // Process a list of items
-    request.payload.items = request.payload.items || [];
-    request.payload.items.forEach(item => {
+    transformation.payload.items = transformation.payload.items || [];
+    transformation.payload.items.forEach(item => {
       if (item.status === 'active') {
         itemCounter++;
         item.updated_at = new Date().toISOString();
@@ -399,26 +434,27 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
     });
 
     // Add a summary field
-    request.payload.summary = {
+    transformation.payload.summary = {
       activeItemCount: itemCounter,
-      totalItems: request.payload.items.length
+      totalItems: transformation.payload.items.length
     };
 
     // Add a new header
-    request.headers['X-Item-Count'] = itemCounter.toString();
+    transformation.headers['X-Item-Count'] = itemCounter.toString();
 
     // Process query parameters
-    request.queryParams.processedAt = new Date().toISOString();
+    transformation.queryParams.processedAt = new Date().toISOString();
 
     // Error handling for missing fields
-    if (!request.payload.items.length) {
+    if (!transformation.payload.items.length) {
       throw new Error('No items to process');
     }
 
-    return request;
+    return transformation;
   }`}
                 </SyntaxHighlighter>
 
+<<<<<<< HEAD
                 {/* Copy button */}
                 <IconButton
                   edge="end"
@@ -469,6 +505,58 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                   </Tooltip>
                 </IconButton>
               </Box>
+=======
+    {/* Copy button */}
+    <IconButton
+      edge="end"
+      sx={{
+        position: 'absolute',
+        top: 15, // Adjust as needed
+        right: 10, // Adjust as needed
+        color: 'text.disabled',
+      }}
+      onClick={() =>
+        navigator.clipboard.writeText((transformation, context) => {
+          // Initialize a counter
+          let itemCounter = 0;
+          // Process a list of items
+          transformation.payload.items = transformation.payload.items || [];
+          transformation.payload.items.forEach((item) => {
+            if (item.status === 'active') {
+              itemCounter += 1; // Avoiding ++ operator
+              item.updated_at = new Date().toISOString();
+            } else {
+              item.status = 'inactive';
+            }
+          });
+
+          // Add a summary field
+          transformation.payload.summary = {
+            activeItemCount: itemCounter,
+            totalItems: transformation.payload.items.length,
+          };
+
+          // Add a new header
+          transformation.headers['X-Item-Count'] = itemCounter.toString();
+
+          // Process query parameters
+          transformation.queryParams.processedAt = new Date().toISOString();
+
+          // Error handling for missing fields
+          if (!transformation.payload.items.length) {
+            throw new Error('No items to process');
+          }
+
+          return transformation;
+        })
+      }
+    >
+      <Tooltip title="Copy transformation_code" arrow placement="bottom">
+          <Iconify width={16} icon="solar:copy-bold" />
+      </Tooltip>
+    </IconButton>
+  </Box>
+>>>>>>> e618a5881ee21c12249750eae8f091c62f3c029e
             </Grid>
 
           </Grid>

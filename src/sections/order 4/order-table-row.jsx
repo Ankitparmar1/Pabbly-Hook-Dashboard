@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -11,20 +12,23 @@ import MenuItem from '@mui/material/MenuItem';
 import TableRow from '@mui/material/TableRow';
 import Checkbox from '@mui/material/Checkbox';
 import TableCell from '@mui/material/TableCell';
-// import IconButton from '@mui/material/IconButton';
 import ListItemText from '@mui/material/ListItemText';
+import {
+  Grid,
+  AppBar,
+  Divider,
+  Toolbar,
+  Tooltip,
+  TextField,
+  Typography,
+  IconButton,
+} from '@mui/material';
 
 import { useBoolean } from 'src/hooks/use-boolean';
-
-// import { fDate, fTime } from 'src/utils/format-time';
-
-// import { Label } from 'src/components/label';
-import { Grid, AppBar, Divider, Toolbar, TextField, Typography, IconButton } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
-// import { FullScreenDialog } from '../dialog-view/full-screen-dialog';
 
 export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteRow }) {
   const confirm = useBoolean();
@@ -44,11 +48,13 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
   const renderPrimary = (
     <TableRow hover selected={selected}>
       <TableCell padding="checkbox">
+        <Tooltip title="Select" arrow placement="top">
         <Checkbox
           checked={selected}
           onClick={onSelectRow}
           inputProps={{ id: `row-checkbox-${row.id}`, 'aria-label': `Row checkbox` }}
         />
+        </Tooltip>
       </TableCell>
 
       <TableCell>
@@ -60,25 +66,55 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            <Box component="span">transformations aditya</Box>
+            <Box component="span"><Tooltip title="Issue Name" arrow placement="top">Rajpal Singh Tomar</Tooltip></Box>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
             >
-              Aug 23, 2024 17:36:44.929
+              <Tooltip title="Issue Applied: Aug 23, 2024 17:36:44.929" arrow placement="top">Aug 23, 2024 17:36:44.929</Tooltip>
             </Box>
           </Stack>
         </Stack>
       </TableCell>
 
+      <TableCell>
+        <Stack spacing={2} direction="row" alignItems="center">
+          <Stack
+            sx={{
+              typography: 'body2',
+              flex: '1 1 auto',
+              alignItems: 'flex-start',
+            }}
+          >
+            <Box component="span">
+            <Tooltip title="Issue ID " arrow placement="top">isu_66c87b54a2b7dc2c1740d639</Tooltip>
+              <Tooltip title="Copy issue_id " arrow placement="bottom">
+                <IconButton
+                  edge="end"
+                  sx={{ color: 'text.disabled' }}
+                  onClick={() => navigator.clipboard.writeText('isu_66c87b54a2b7dc2c1740d639')}
+                >
+                  <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
+                </IconButton>
+              </Tooltip>
+            </Box>
+            <Box
+              component="span"
+              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
+            />
+          </Stack>
+        </Stack>
+      </TableCell>
+
       <TableCell align="right">
+        <Tooltip title="Tap to view full issue details" arrow placement="top">
         <Box
           component="span"
-          sx={{ color: 'success.main', cursor: 'pointer' }}
+          sx={{ color: 'primary.main', cursor: 'pointer' }}
           onClick={handleOpenDrawer}
         >
-          {'(request, context) =>'}
-        </Box>
+          {'(issue, context) =>'}
+        </Box></Tooltip>
       </TableCell>
     </TableRow>
   );
@@ -87,6 +123,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
     <TableRow>
       <TableCell sx={{ p: 0, border: 'none' }} colSpan={8}>
         {' '}
+        {/* Adjust colSpan according to the number of columns in your table */}
         <Collapse
           in={collapse.value}
           timeout="auto"
@@ -174,7 +211,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         onClose={handleCloseDrawer}
         anchor="right"
         slotProps={{ backdrop: { invisible: true } }}
-        PaperProps={{ sx: { width: 850 } }}
+        PaperProps={{  sx: {
+      width: { xs: '100%', sm: 700, md: 850 }, // Adjust width based on screen size
+      '@media (max-width: 300px)': {
+        padding: '16px',
+      },
+    }, }}
       >
         {/* <Card component="ul" position="relative" float="left"> */}
         <AppBar
@@ -184,12 +226,22 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           display="flex"
         >
           <Toolbar>
-            {/* <IconButton color="inherit" edge="start" onClick={dialog.onFalse}>
+            <IconButton
+              color="inherit"
+              edge="start"
+              sx={{
+                position: 'absolute',
+                top: 1, // Adjust top position as needed
+                right: 28, // Adjust right position as needed
+              }}
+              onClick={handleCloseDrawer}
+            >
               <Iconify icon="mingcute:close-line" />
-            </IconButton> */}
+            </IconButton>
+            {/* You can uncomment this Button if you need a Save button */}
             {/* <Button autoFocus color="inherit" variant="contained" onClick={dialog.onFalse}>
-              Save
-            </Button> */}
+            Save
+          </Button> */}
           </Toolbar>
           <Typography
             sx={{
@@ -201,21 +253,27 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               fontWeight: 700,
             }}
           >
-            transformation aditya
+            Rajpal Singh Tomar
           </Typography>
           <Typography
             sx={{ flex: 1, ml: 2, color: 'text.disabled', fontSize: '16px', fontWeight: 400 }}
           >
-            trs_66c87b54a2b7dc2c1740d639
-            <IconButton edge="end" sx={{ color: 'text.disabled' }}>
-              <Iconify width={18} icon="solar:copy-bold" />
-            </IconButton>
+            isu_66c87b54a2b7dc2c1740d639
+            <Tooltip title="Copy issue_id " arrow placement="bottom">
+              <IconButton
+                edge="end"
+                sx={{ color: 'text.disabled' }}
+                onClick={() => navigator.clipboard.writeText('isu_66c87b54a2b7dc2c1740d639')}
+              >
+                <Iconify sx={{ mt: -0.2 }} width={15} icon="solar:copy-bold" />
+              </IconButton>
+            </Tooltip>
           </Typography>
         </AppBar>
         <Divider />
         <Box sx={{ width: '90%', mt: 2, ml: 5, bgcolor: '#fff', padding: 2 }}>
           <Typography variant="h6" gutterBottom>
-            Transformation Details
+            Issue Details
           </Typography>
           <Divider />
           <Grid container spacing={2} mt={2}>
@@ -225,14 +283,14 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
               <TextField
                 disabled
-                value="transformation aditya"
+                value="Rajpal Singh Tomar"
                 fullWidth
                 variant="outlined"
                 size="small"
               />
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
-              <Typography variant="body2">Created At</Typography>
+              <Typography variant="body2">Applied At</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
               <TextField
@@ -244,12 +302,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               />
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
-              <Typography variant="body2">TRS ID</Typography>
+              <Typography variant="body2">ISU ID</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
               <TextField
                 disabled
-                value="trs_66c87b54a2b7dc2c1740d639"
+                value="isu_66c87b54a2b7dc2c1740d639"
                 fullWidth
                 variant="outlined"
                 size="small"
@@ -268,52 +326,130 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               />
             </Grid>
             <Grid item xs={12} sm={4} md={3} lg={2} xl={2}>
-              <Typography variant="body2">Transformation Code</Typography>
+              <Typography variant="body2">Issue Code</Typography>
             </Grid>
             <Grid item xs={12} sm={8} md={9} lg={10} xl={10}>
-              <TextField
-                disabled
-                value={`(request, context) => {
-                        // Initialize a counter
-                        let itemCounter = 0;
-                        // Process a list of items
-                        request.payload.items = request.payload.items || [];
-                        request.payload.items.forEach(item => {
-                        if (item.status === 'active') {
-                        itemCounter++;
-                        item.updated_at = new Date().toISOString();
-                        } else {
-                        item.status = 'inactive';
-                        }
-                        });
+  <Box 
+    sx={{
+      position: 'relative',
+      maxHeight: 400,
+      overflowY: 'auto',  // Control vertical overflow
+      overflowX: 'hidden',  // Hide horizontal overflow to avoid scroll
+      border: '1px solid #E5E8EB',
+      borderRadius: 1,
+      // Custom scrollbar styling
+      '&::-webkit-scrollbar': {
+        width: '8px',  // Set the width of the scrollbar
+      },
+      '&::-webkit-scrollbar-thumb': {
+        backgroundColor: '#888',  // Color of the scrollbar thumb
+        borderRadius: '10px',  // Border radius for rounded scrollbar
+      },
+      '&::-webkit-scrollbar-thumb:hover': {
+        backgroundColor: '#555',  // Color on hover
+      },
+      '&::-webkit-scrollbar-track': {
+        backgroundColor: '#f1f1f1',  // Background of the scrollbar track
+        borderRadius: '10px',  // Border radius for the track
+      },
+    }}
+  >
+    <SyntaxHighlighter
+      language="javascript"
+      customStyle={{ 
+        backgroundColor: 'transparent', 
+        wordWrap: 'break-word',  // Ensure long lines wrap
+        whiteSpace: 'pre-wrap',  // Maintain formatting while allowing wrapping
+      }}
+      wrapLongLines  // Ensure code lines don't overflow horizontally
+    >
+      {`(issue, context) => {
+    // Initialize a counter
+    let itemCounter = 0;
+    // Process a list of items
+    issue.payload.items = issue.payload.items || [];
+    issue.payload.items.forEach(item => {
+      if (item.status === 'active') {
+        itemCounter++;
+        item.updated_at = new Date().toISOString();
+      } else {
+        item.status = 'inactive';
+      }
+    });
 
-                        // Add a summary field
-                        request.payload.summary = {
-                        activeItemCount: itemCounter,
-                        totalItems: request.payload.items.length
-                        };
+    // Add a summary field
+    issue.payload.summary = {
+      activeItemCount: itemCounter,
+      totalItems: issue.payload.items.length
+    };
 
-                        // Add a new header
-                        request.headers['X-Item-Count'] = itemCounter.toString();
+    // Add a new header
+    issue.headers['X-Item-Count'] = itemCounter.toString();
 
-                        // Process query parameters
-                        request.queryParams.processedAt = new Date().toISOString();
+    // Process query parameters
+    issue.queryParams.processedAt = new Date().toISOString();
 
-                        // Error handling for missing fields
-                        if (!request.payload.items.length) {
-                        throw new Error('No items to process');
-                        }
+    // Error handling for missing fields
+    if (!request.payload.items.length) {
+      throw new Error('No items to process');
+    }
 
-                        return request;
-                        }`}
-                fullWidth
-                variant="outlined"
-                size="auto"
-                multiline
-                minRows={3} // Minimum number of rows
-                maxRows={10} // Maximum number of rows
-              />
+    return issue;
+  }`}
+    </SyntaxHighlighter>
+
+    {/* Copy button */}
+    <IconButton
+      edge="end"
+      sx={{
+        position: 'absolute',
+        top: 15, // Adjust as needed
+        right: 10, // Adjust as needed
+        color: 'text.disabled',
+      }}
+      onClick={() =>
+        navigator.clipboard.writeText((issue, context) => {
+          // Initialize a counter
+          let itemCounter = 0;
+          // Process a list of items
+          issue.payload.items = issue.payload.items || [];
+          issue.payload.items.forEach((item) => {
+            if (item.status === 'active') {
+              itemCounter += 1; // Avoiding ++ operator
+              item.updated_at = new Date().toISOString();
+            } else {
+              item.status = 'inactive';
+            }
+          });
+
+          // Add a summary field
+          issue.payload.summary = {
+            activeItemCount: itemCounter,
+            totalItems: issue.payload.items.length,
+          };
+
+          // Add a new header
+          issue.headers['X-Item-Count'] = itemCounter.toString();
+
+          // Process query parameters
+          issue.queryParams.processedAt = new Date().toISOString();
+
+          // Error handling for missing fields
+          if (!issue.payload.items.length) {
+            throw new Error('No items to process');
+          }
+
+          return issue;
+        })
+      }
+    >
+      <Tooltip title="Copy issue_code" arrow placement="bottom">
+          <Iconify width={16} icon="solar:copy-bold" />
+      </Tooltip>
+    </IconButton>
+  </Box>
             </Grid>
+
           </Grid>
         </Box>
         {/* </Card> */}

@@ -4,11 +4,11 @@ import Stack from '@mui/material/Stack';
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 // import TextField from '@mui/material/TextField';
-import IconButton from '@mui/material/IconButton';
+// import IconButton from '@mui/material/IconButton';
 // import InputAdornment from '@mui/material/InputAdornment';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // import { formHelperTextClasses } from '@mui/material/FormHelperText';
-import { Typography } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
@@ -98,11 +98,13 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
               ),
             }}
           /> */}
+          <Tooltip title="List of all issues and there status." arrow placement="top">
           <Typography fontSize={18} fontWeight={700} lineHeight={2}>
             Issues
           </Typography>
+          </Tooltip>
 
-          <IconButton
+          {/* <IconButton
             onClick={popover.onOpen}
             sx={{
               position: 'relative',
@@ -127,7 +129,7 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
             <Typography sx={{ color: 'black', fontSize: '13px', ml: 1, fontWeight: '400px' }}>
               Filter
             </Typography>
-          </IconButton>
+          </IconButton> */}
         </Stack>
       </Stack>
 

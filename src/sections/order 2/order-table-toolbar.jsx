@@ -8,7 +8,7 @@ import IconButton from '@mui/material/IconButton';
 // import InputAdornment from '@mui/material/InputAdornment';
 // import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 // import { formHelperTextClasses } from '@mui/material/FormHelperText';
-import { Typography } from '@mui/material';
+import { Tooltip, Typography } from '@mui/material';
 
 import { Iconify } from 'src/components/iconify';
 import { usePopover, CustomPopover } from 'src/components/custom-popover';
@@ -98,9 +98,11 @@ export function OrderTableToolbar({ filters, onResetPage }) {
               ),
             }}
           /> */}
+          <Tooltip title="List of all transformation ID's and there status." arrow placement="top">
           <Typography fontSize={18} fontWeight={700} lineHeight={2}>
             Transformations
           </Typography>
+          </Tooltip>
 
           <IconButton
             onClick={popover.onOpen}

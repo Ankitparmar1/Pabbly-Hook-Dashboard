@@ -9,6 +9,8 @@ import { alpha as hexAlpha } from '@mui/material/styles';
 
 // import { paths } from 'src/routes/paths';
 
+import { Tooltip } from '@mui/material';
+
 import { CONFIG } from 'src/config-global';
 import { varAlpha, bgGradient } from 'src/theme/styles';
 
@@ -62,10 +64,12 @@ export function NavUpgrade({ sx, ...other }) {
             {user?.email}
           </Typography>
         </Stack>
-
+        
+        <Tooltip title="Upgrade for advanced features." arrow placement='top'>
         <Button variant="contained" href="https://www.pabbly.com/connect/inr/" target="_blank" rel="noopener">
           Upgrade to Pro
         </Button>
+        </Tooltip>
       </Stack>
     </Stack>
   );
@@ -130,10 +134,12 @@ export function UpgradeBlock({ sx, ...other }) {
         >
           Power up Productivity!
         </Box>
-
+        
+        <Tooltip title="Upgrade for advanced features." arrow placement='top'>
         <Button variant="contained" href="https://www.pabbly.com/connect/inr/" target="_blank" size="small" color="warning">
           Upgrade to Pro
         </Button>
+        </Tooltip>
       </Stack>
     </Stack>
   );

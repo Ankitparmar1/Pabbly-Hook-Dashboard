@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import Table from '@mui/material/Table';
 import Button from '@mui/material/Button';
+import { TableBody } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
-// import TableBody from '@mui/material/TableBody';
 import IconButton from '@mui/material/IconButton';
 
 import { paths } from 'src/routes/paths';
@@ -29,13 +29,17 @@ import { Scrollbar } from 'src/components/scrollbar';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import {
   useTable,
+  emptyRows,
   rowInPage,
+  TableNoData,
   getComparator,
+  TableEmptyRows,
   TableHeadCustom,
   TableSelectedAction,
   TablePaginationCustom,
 } from 'src/components/table';
 
+import { OrderTableRow } from '../order-table-row';
 import { OrderTableToolbar } from '../order-table-toolbar';
 import { OrderTableFiltersResult } from '../order-table-filters-result';
 
@@ -44,10 +48,9 @@ import { OrderTableFiltersResult } from '../order-table-filters-result';
 const STATUS_OPTIONS = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_OPTIONS];
 
 const TABLE_HEAD = [
-  { id: 'orderNumber', label: (<Tooltip title="View issue names " placement='top'>ISSUES/NAME</Tooltip>) },
-  { id: 'name', label: (<Tooltip title="view issues ID's." placement='top'>ISSUES/ID</Tooltip>) },
-  { id: 'createdAt', label: '' },
-  { id: 'totalAmount', label: (<Tooltip title="List of code and issue." placement='top'>ISSUES/CODE</Tooltip>), align: 'right' },
+  { id: 'orderNumber', label: (<Tooltip title="View issue name and date of applied. " arrow placement='top'>ISSUE NAME/DATE </Tooltip>) },
+  { id: 'name', label: (<Tooltip title="View issues ID's." arrow placement='top'>ISSUE ID</Tooltip>) },
+  { id: 'totalAmount', label: (<Tooltip title="View issues summary." arrow placement='top'>ISSUE CODE</Tooltip>), align: 'right' },
 ];
 
 // ----------------------------------------------------------------------
@@ -170,7 +173,7 @@ export function OrderListView() {
             />
 
             <Scrollbar sx={{ minHeight: 180, width: '100%' }}>
-              <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '100.40%' }}>
+              <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '100%' }}>
                 <TableHeadCustom
                   order={table.order}
                   orderBy={table.orderBy}
@@ -185,6 +188,31 @@ export function OrderListView() {
                     )
                   }
                 />
+                <TableBody>
+                  {dataFiltered
+                    .slice(
+                      table.page * table.rowsPerPage,
+                      table.page * table.rowsPerPage + table.rowsPerPage
+                    )
+                    .map((row) => (
+                      <OrderTableRow
+                        key={row.id}
+                        row={row}
+                        selected={table.selected.includes(row.id)}
+                        onSelectRow={() => table.onSelectRow(row.id)}
+                        onDeleteRow={() => handleDeleteRow(row.id)}
+                        onViewRow={() => handleViewRow(row.id)}
+                        sx={{ width: '100%' }} // Full width for each row
+                      />
+                    ))}
+
+                  <TableEmptyRows
+                    height={table.dense ? 56 : 56 + 20}
+                    emptyRows={emptyRows(table.page, table.rowsPerPage, dataFiltered.length)}
+                  />
+
+                  <TableNoData notFound={notFound} />
+                </TableBody>
               </Table>
             </Scrollbar>
           </Box>

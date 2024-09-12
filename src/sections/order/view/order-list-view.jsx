@@ -50,7 +50,7 @@ const STATUS_CONNECTION = [{ value: 'all', label: 'All' }, ...ORDER_STATUS_CONNE
 const TABLE_HEAD = [
   { id: 'orderNumber', label: (<Tooltip title="View connections status and date of creation." arrow placement='top'>STATUS/DATE</Tooltip>) },
   { id: 'name', label: (<Tooltip title="Name of connection and folder where it is located." arrow placement='top'>CONNECTION NAME</Tooltip>), align: 'left' },
-  { id: 'createdAt', label: (<Tooltip title="Status of the requests and events." arrow placement='top'>REQUEST/EVENTS</Tooltip>), align: 'right' },
+  { id: 'createdAt', label: (<Tooltip title="Status of the requests and events." arrow placement='top'>REQUEST/EVENTS</Tooltip>), align: 'center' },
 ];
 
 // ----------------------------------------------------------------------
@@ -193,7 +193,7 @@ export function OrderListView() {
             />
           )}
 
-          <Box sx={{ position: 'relative', width: '100%' }}>
+          <Box sx={{ position: 'relative', width: '103.5%' }}>
             <TableSelectedAction
               dense={table.dense}
               numSelected={table.selected.length}
