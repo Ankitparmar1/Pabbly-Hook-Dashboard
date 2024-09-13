@@ -77,7 +77,7 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
         minDate={dayjs('2017-01-01')}
         onChange={(newValue) => setStartDate(newValue)}
         slotProps={{ textField: { fullWidth: false } }}
-        sx={{ width: '191px' }}  // Custom width for Start Date
+        sx={{ width: '200px' }}  // Custom width for Start Date
       />
     </LocalizationProvider>
 
@@ -88,13 +88,13 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
         minDate={dayjs('2017-01-01')}
         onChange={(newValue) => setEndDate(newValue)}
         slotProps={{ textField: { fullWidth: false } }}
-        sx={{ width: '191px' }}  // Custom width for End Date
+        sx={{ width: '200px' }}  // Custom width for End Date
       />
     </LocalizationProvider>
 
     <Tooltip title="Click here to search by issue name or ID's." arrow placement="top">
       <TextField
-        sx={{ width: '394px', mr: '7.5px' }}  // Custom width for TextField
+        sx={{ width: '400px', mr: '7.5px' }}  // Custom width for TextField
         value={filters.state.name}
         onChange={handleFilterName}
         placeholder="Search your issue name or ID's"

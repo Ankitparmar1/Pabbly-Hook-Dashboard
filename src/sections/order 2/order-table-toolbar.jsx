@@ -77,7 +77,7 @@ export function OrderTableToolbar({ filters, onResetPage }) {
         minDate={dayjs('2017-01-01')}
         onChange={(newValue) => setStartDate(newValue)}
         slotProps={{ textField: { fullWidth: false } }}
-        sx={{ width: '176px' }}  // Custom width for Start Date
+        sx={{ width: '190px' }}  // Custom width for Start Date
       />
     </LocalizationProvider>
 
@@ -88,7 +88,7 @@ export function OrderTableToolbar({ filters, onResetPage }) {
         minDate={dayjs('2017-01-01')}
         onChange={(newValue) => setEndDate(newValue)}
         slotProps={{ textField: { fullWidth: false } }}
-        sx={{ width: '176px' }}  // Custom width for End Date
+        sx={{ width: '190px' }}  // Custom width for End Date
       />
     </LocalizationProvider>
 

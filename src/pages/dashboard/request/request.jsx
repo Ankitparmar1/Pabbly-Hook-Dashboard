@@ -6,8 +6,6 @@ import { OrderListView } from 'src/sections/order 5/view';
 import { OrderListView0 } from 'src/sections/order 6/view';
 import { OverviewCourseView } from 'src/sections/course4/view';
 
-
-
 // ----------------------------------------------------------------------
 
 const metadata = { title: `Page four | Dashboard - ${CONFIG.site.name}` };
