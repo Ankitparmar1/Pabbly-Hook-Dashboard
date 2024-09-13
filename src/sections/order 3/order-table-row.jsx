@@ -119,11 +119,6 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     {item.label}
                   </Typography>
                 </Tooltip>
-                <Tooltip title="Request ID" arrow placement='top'>
-                  <Typography fontSize={14} color="#1c252e">
-                    {item.label}
-                  </Typography>
-                </Tooltip>
                 <Tooltip title="Copy request_id " arrow placement="bottom">
 
                   <IconButton
