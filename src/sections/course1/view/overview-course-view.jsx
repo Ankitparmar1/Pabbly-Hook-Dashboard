@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 
-// import { FormDialog } from 'src/sections/dialog-view/form-dialog';
+import { FormDialog } from 'src/sections/dialog-view/form-dialog2';
 
 import { CourseWidgetSummary } from '../course-widget-summary';
 
@@ -53,8 +53,8 @@ export function OverviewCourseView() {
                   </a>
                 </Typography>
               </div>
-              <Box sx={{ mt: { xs: 2, sm: 0 } }}>
-                {/* <FormDialog /> */}
+              <Box sx={{ mt: { xs: 2, sm: 1.8 } }}>
+                <FormDialog />
               </Box>
             </Box>
           </Box>

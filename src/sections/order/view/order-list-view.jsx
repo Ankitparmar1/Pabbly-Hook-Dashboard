@@ -25,7 +25,7 @@ import { _connection, ORDER_STATUS_CONNECTION } from 'src/_mock/connectiontable'
 import { Label } from 'src/components/label';
 import { toast } from 'src/components/snackbar';
 import { Iconify } from 'src/components/iconify';
-import { Scrollbar } from 'src/components/scrollbar';
+// import { Scrollbar } from 'src/components/scrollbar';
 import { ConfirmDialog } from 'src/components/custom-dialog';
 import {
   useTable,
@@ -193,7 +193,7 @@ export function OrderListView() {
             />
           )}
 
-          <Box sx={{ position: 'relative', width: '103.5%' }}>
+          <Box sx={{ position: 'relative', width: '100%' }}>
             <TableSelectedAction
               dense={table.dense}
               numSelected={table.selected.length}
@@ -213,8 +213,8 @@ export function OrderListView() {
               }
             />
 
-            <Scrollbar sx={{ minHeight: 444, width: '100%' }}>
-              <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '100%' }}>
+            {/* <Scrollbar sx={{ minHeight: 444, width: '100%' }}> */}
+              <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '103.8%' }}>
                 <TableHeadCustom
                   order={table.order}
                   orderBy={table.orderBy}
@@ -256,7 +256,7 @@ export function OrderListView() {
                   <TableNoData notFound={notFound} />
                 </TableBody>
               </Table>
-            </Scrollbar>
+            {/* </Scrollbar> */}
           </Box>
 
           <TablePaginationCustom

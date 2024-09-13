@@ -114,18 +114,17 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 {row.status}
               </Label>
             </Tooltip>
+           <Box sx={{ mt: 0.5,}} fontSize={14}>Ankit Singh Parmar</Box>  
             <Box
               component="span"
-              sx={{ color: 'text.disabled', mt: 1, fontSize: '12px', fontWeight: 400 }}
-            >        <Tooltip arrow title="Connection created: Aug 23, 2024 17:36:44.929" placement='top'><Box fontSize={14}>Aug 23, 2024 17:36:44.929</Box></Tooltip>
+              sx={{ color: 'text.disabled', mt: 0, fontSize: '12px', fontWeight: 400 }}
+            >
+              Aug 23, 2024 17:36:44.929
             </Box>
           </Stack>
         </Stack>
       </TableCell>
-      <TableCell>
-        <Tooltip arrow title="Connection name: Ankit singh parmar" placement='top'><Box fontSize={14}>Ankit Singh Parmar</Box></Tooltip>
-
-      </TableCell>
+     
       <TableCell>
         <Stack spacing={2} direction="row" alignItems="center">
           <Stack
@@ -146,13 +145,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
-<<<<<<< HEAD
-                <Tooltip arrow title="Request_id" placement='top'>     <Typography onClick={handleOpenDrawer} fontSize={14} color="283746">
-=======
                 <Typography onClick={handleOpenDrawer} fontSize={14} color="primary.main">
->>>>>>> 1c5cedfc4ca1a36b28cbda961736da1e896c81ef
                   {item.label}
-                </Typography></Tooltip>
+                </Typography>
               </Box>
             ))}
             <Box
@@ -299,14 +294,14 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             req_66c87b54a2b7dcc1740d639
             <Tooltip title="Copy request_id " arrow placement="bottom">
-              <IconButton
-                edge="end"
-                sx={{ color: 'text.disabled' }}
-                onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
-              >
-                <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
-              </IconButton>
-            </Tooltip>
+                  <IconButton
+                    edge="end"
+                    sx={{ color: 'text.disabled' }}
+                    onClick={() => navigator.clipboard.writeText('req_66c87b54a2b7dc2c1740d639')}
+                  >
+                    <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
+                  </IconButton>
+                </Tooltip>
           </Typography>
         </AppBar>
         <Divider />
