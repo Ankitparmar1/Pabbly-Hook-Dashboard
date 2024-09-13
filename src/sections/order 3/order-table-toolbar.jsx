@@ -77,20 +77,22 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
         alignItems={{ xs: 'flex-end', md: 'center' }}
         direction={{ xs: 'column', md: 'row' }}
         sx={{ p: 2.5, pr: { xs: 2.5, md: 1 } }}
-
-
       >
-
         <Stack
-          direction="row"
+          direction={{ xs: 'column', md: 'row' }}
           spacing={1}
           flexGrow={1}
           sx={{ width: 1, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
         >
           <Typography>
-            <Tooltip arrow title="List of all event requests and there status." placement='top'><b> Events </b></Tooltip>
+            <Tooltip arrow title="List of all event requests and their status." placement="top">
+              <b>Events</b>
+            </Tooltip>
           </Typography>
-          <Stack ml={52.5} direction="row" alignItems="center" spacing={1}>
+
+          {/* Stack for Filters and Search */}
+          <Stack ml={{ xs: 0, md: 'auto' }} direction="row" alignItems="center" spacing={1} flexWrap="wrap">
+            {/* Date Pickers */}
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DatePicker
                 label="Start Date"
@@ -98,7 +100,7 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
                 minDate={dayjs('2017-01-01')}
                 onChange={(newValue) => setStartDate(newValue)}
                 slotProps={{ textField: { fullWidth: false } }}
-                sx={{ width: '191px' }}  // Custom width for Start Date
+                sx={{ width: { xs: '100%', sm: '191px' }, mb: { xs: 2, md: 0 } }} // Responsive width
               />
             </LocalizationProvider>
 
@@ -109,13 +111,14 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
                 minDate={dayjs('2017-01-01')}
                 onChange={(newValue) => setEndDate(newValue)}
                 slotProps={{ textField: { fullWidth: false } }}
-                sx={{ width: '191px' }}  // Custom width for End Date
+                sx={{ width: { xs: '100%', sm: '191px' }, mb: { xs: 2, md: 0 } }} // Responsive width
               />
             </LocalizationProvider>
 
+            {/* Search Field */}
             <Tooltip title="Click here to search by event name or ID's." arrow placement="top">
               <TextField
-                sx={{ width: '374px', mr: '7.5px', }}  // Custom width for TextField
+                sx={{ width: { xs: '100%', sm: '384px' }, mr: { xs: 0, md: '7.5px' }, mb: { xs: 2, md: 0 } }} // Responsive width
                 value={filters.state.name}
                 onChange={handleFilterName}
                 placeholder="Search your event name or ID's"
@@ -129,9 +132,10 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
               />
             </Tooltip>
           </Stack>
-          <Stack >
 
-            <Tooltip placement='top' arrow title="Filter requests by status or name.">
+          {/* Filter Button */}
+          <Stack>
+            <Tooltip placement="top" arrow title="Filter requests by status or name.">
               <IconButton
                 onClick={popover.onOpen}
                 sx={{
@@ -159,10 +163,8 @@ export function OrderTableToolbar({ filters, onResetPage, dateError }) {
                 </Typography>
               </IconButton>
             </Tooltip>
-
           </Stack>
         </Stack>
-
       </Stack>
 
       <CustomPopover
