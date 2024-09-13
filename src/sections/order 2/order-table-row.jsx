@@ -110,10 +110,10 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         <Tooltip title="Tap to view full transformation details" arrow placement="top">
           <Box
             component="span"
-            sx={{ color: 'success.main', cursor: 'pointer' }}
+            sx={{ color: 'primary.main', cursor: 'pointer' }}
             onClick={handleOpenDrawer}
           >
-            {'(request, context) =>'}
+            {'(transformation, context) =>'}
           </Box></Tooltip>
       </TableCell>
 
@@ -294,7 +294,9 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
         <Divider />
         <Box sx={{ width: '90%', mt: 2, ml: 5, bgcolor: '#fff', padding: 2 }}>
           <Typography variant="h6" gutterBottom>
-            Transformation Details
+            <Tooltip title="Transformation status" arrow placement="top">
+              Transformation Details
+            </Tooltip>
           </Typography>
           <Divider />
           <Grid container spacing={2} mt={2}>
@@ -384,7 +386,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                   }}
                   wrapLongLines  // Ensure code lines don't overflow horizontally
                 >
-                  {`(request, context) => {
+                  {`(transformation, context) => {
     // Initialize a counter
     let itemCounter = 0;
     // Process a list of items
@@ -429,12 +431,12 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     color: 'text.disabled',
                   }}
                   onClick={() =>
-                    navigator.clipboard.writeText((request, context) => {
+                    navigator.clipboard.writeText((transformation, context) => {
                       // Initialize a counter
                       let itemCounter = 0;
                       // Process a list of items
-                      request.payload.items = request.payload.items || [];
-                      request.payload.items.forEach((item) => {
+                      transformation.payload.items = transformation.payload.items || [];
+                      transformation.payload.items.forEach((item) => {
                         if (item.status === 'active') {
                           itemCounter += 1; // Avoiding ++ operator
                           item.updated_at = new Date().toISOString();
@@ -444,27 +446,27 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                       });
 
                       // Add a summary field
-                      request.payload.summary = {
+                      transformation.payload.summary = {
                         activeItemCount: itemCounter,
-                        totalItems: request.payload.items.length,
+                        totalItems: transformation.payload.items.length,
                       };
 
                       // Add a new header
-                      request.headers['X-Item-Count'] = itemCounter.toString();
+                      transformation.headers['X-Item-Count'] = itemCounter.toString();
 
                       // Process query parameters
-                      request.queryParams.processedAt = new Date().toISOString();
+                      transformation.queryParams.processedAt = new Date().toISOString();
 
                       // Error handling for missing fields
-                      if (!request.payload.items.length) {
+                      if (!transformation.payload.items.length) {
                         throw new Error('No items to process');
                       }
 
-                      return request;
+                      return transformation;
                     })
                   }
                 >
-                  <Tooltip title="Copy trs_code" arrow placement="bottom">
+                  <Tooltip title="Copy transformation_code" arrow placement="bottom">
                     <Iconify width={16} icon="solar:copy-bold" />
                   </Tooltip>
                 </IconButton>
