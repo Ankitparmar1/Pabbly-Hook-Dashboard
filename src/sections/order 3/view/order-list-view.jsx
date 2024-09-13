@@ -186,8 +186,10 @@ export function OrderListView() {
                         ? tableData.filter((user) => user.status === tab.value).length
                         : tableData.length}
                     </Label>
+
                   </Tooltip>
                 }
+
               />
             ))}
           </Tabs>

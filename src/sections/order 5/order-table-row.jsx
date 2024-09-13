@@ -146,11 +146,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
-<<<<<<< HEAD
                 <Tooltip arrow title="Request_id" placement='top'>     <Typography onClick={handleOpenDrawer} fontSize={14} color="283746">
-=======
-                <Typography onClick={handleOpenDrawer} fontSize={14} color="primary.main">
->>>>>>> 1c5cedfc4ca1a36b28cbda961736da1e896c81ef
                   {item.label}
                 </Typography></Tooltip>
               </Box>
