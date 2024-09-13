@@ -524,7 +524,8 @@ export function OverviewEcommerceView() {
                 type="email"
                 margin="dense"
                 variant="outlined"
-                label="Enter URL"
+                // label="Enter URL"
+                placeholder='Enter URL'
                 helperText="Enter the webhook URL."
                 value={url}
                 onChange={handleChange}
@@ -568,7 +569,8 @@ export function OverviewEcommerceView() {
                 type="email"
                 margin="dense"
                 variant="outlined"
-                label="Enter Webhook URL"
+                // label="Enter Webhook URL"
+                placeholder='Enter Webhook URL'
                 helperText="Define where your events should be sent. Destinations can be reused across multiple connections."
               />
             </DialogContent>
@@ -592,7 +594,7 @@ export function OverviewEcommerceView() {
                   id="outlined-Rate-limit"
                   select
                   fullWidth
-                  label="Select"
+                  // label="Select"
                   defaultValue="USD"
                   helperText=" Enable events rate limit to control the maximum throughput of events delivered to your destination."
                   sx={{ mt: 2 }}
@@ -613,7 +615,7 @@ export function OverviewEcommerceView() {
                 id="outlined-select-currency"
                 select
                 fullWidth
-                label="Select"
+                // label="Select"
                 defaultValue="USD"
                 helperText="Please select your time frame"
               >
@@ -632,7 +634,7 @@ export function OverviewEcommerceView() {
                 id="outlined-select-currency"
                 select
                 fullWidth
-                label="Select"
+                // label="Select"
                 defaultValue="USD"
                 helperText="Force the requests to your destination to use a specific HTTP method. By default, the request will be made with the same method as the original request."
               >
@@ -744,7 +746,7 @@ export function OverviewEcommerceView() {
                     id="outlined-Rate-limit"
                     select
                     fullWidth
-                    label="Delay between retries"
+                    // label="Delay between retries"
                     defaultValue="USD"
                     helperText="Incase destination endpoint is down."
                     sx={{ mt: 2 }}
@@ -790,7 +792,8 @@ export function OverviewEcommerceView() {
                   <Typography sx={{ mb: 1, mt: 1, fontSize: '15px' }}>Batch Size</Typography>
                   <TextField
                     fullWidth
-                    label="Enter any number"
+                    // label="Enter any number"
+                    placeholder='Enter any number'
                     variant="outlined"
                     helperText="Define a Batch Size for the event."
                     sx={{ mb: 2 }}
@@ -822,7 +825,8 @@ export function OverviewEcommerceView() {
                     {selectedTab === 0 && (
                       <TextField
                         fullWidth
-                        label="Body Content"
+                        // label="Body Content"
+                        placeholder='Body Content'
                         variant="outlined"
                         helperText="Set the body content."
                         multiline
@@ -845,7 +849,8 @@ export function OverviewEcommerceView() {
                     {selectedTab === 1 && (
                       <TextField
                         fullWidth
-                        label="Headers Content"
+                        // label="Headers Content"
+                        placeholder='Header Content'
                         variant="outlined"
                         helperText="Set the headers content."
                         multiline
@@ -868,7 +873,8 @@ export function OverviewEcommerceView() {
                     {selectedTab === 2 && (
                       <TextField
                         fullWidth
-                        label="Query Parameters"
+                        // label="Query Parameters"
+                        placeholder='Query Parameters'
                         variant="outlined"
                         helperText="Set the query parameters."
                         multiline
@@ -891,7 +897,8 @@ export function OverviewEcommerceView() {
                     {selectedTab === 3 && (
                       <TextField
                         fullWidth
-                        label="Path Parameters"
+                        // label="Path Parameters"
+                        placeholder='Path Parameters'
                         variant="outlined"
                         helperText="Set the path parameters."
                         multiline

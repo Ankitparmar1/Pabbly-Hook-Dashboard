@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CONFIG } from 'src/config-global';
 import { DashboardContent } from 'src/layouts/dashboard';
 
-import { FormDialog } from 'src/sections/dialog-view/form-dialog';
+import { FormDialog } from 'src/sections/dialog-view/form-dialog2';
 
 import { CourseWidgetSummary } from '../course-widget-summary';
 

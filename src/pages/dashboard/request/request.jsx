@@ -6,6 +6,7 @@ import { OrderListView } from 'src/sections/order 5/view';
 import { OverviewCourseView } from 'src/sections/course4/view';
 
 
+
 // ----------------------------------------------------------------------
 
 const metadata = { title: `Page four | Dashboard - ${CONFIG.site.name}` };
@@ -17,6 +18,7 @@ export default function Page() {
         <title> {metadata.title}</title>
       </Helmet>
       <OverviewCourseView />
+      <OrderListView />
       <OrderListView />
     </div>
   );

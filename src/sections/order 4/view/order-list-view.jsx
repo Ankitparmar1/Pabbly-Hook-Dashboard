@@ -172,7 +172,7 @@ export function OrderListView() {
               }
             />
 
-            <Scrollbar sx={{ minHeight: 180, width: '100%' }}>
+            <Scrollbar sx={{ minHeight: 444, width: '100%' }}>
               <Table size={table.dense ? 'small' : 'medium'} sx={{ minWidth: '100%' }}>
                 <TableHeadCustom
                   order={table.order}

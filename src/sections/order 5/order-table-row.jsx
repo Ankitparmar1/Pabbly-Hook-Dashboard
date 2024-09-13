@@ -146,7 +146,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                     <Iconify sx={{ mt: -0.2 }} width={14} icon="solar:copy-bold" />
                   </IconButton>
                 </Tooltip>
-                <Typography onClick={handleOpenDrawer} fontSize={14} color="283746">
+                <Typography onClick={handleOpenDrawer} fontSize={14} color="primary.main">
                   {item.label}
                 </Typography>
               </Box>
@@ -323,14 +323,14 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
                 open={openSnackbar}
                 autoHideDuration={4000}
                 onClose={handleCloseSnackbar}
-                message="This is an error Alert."
+                message="This is an successfully setup."
                 anchorOrigin={{
                   vertical: 'top',
                   horizontal: 'center',  // Changed to 'center' from 'mid 10%' to use a valid Material-UI position
                 }}
               >
                 <Alert onClose={handleCloseSnackbar} severity="success">
-                  Connection successfully setup.
+                  Request successfully setup.
                 </Alert>
               </Snackbar>
             </Grid>
