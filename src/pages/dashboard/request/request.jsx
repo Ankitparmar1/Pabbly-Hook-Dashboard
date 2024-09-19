@@ -8,6 +8,8 @@ import { OverviewCourseView } from 'src/sections/course4/view';
 
 
 
+
+
 // ----------------------------------------------------------------------
 
 const metadata = { title: `Page four | Dashboard - ${CONFIG.site.name}` };
@@ -20,7 +22,7 @@ export default function Page() {
       </Helmet>
       <OverviewCourseView />
       <OrderListView />
-      <OrderListView0/>
+      <OrderListView0 />
     </div>
   );
 }

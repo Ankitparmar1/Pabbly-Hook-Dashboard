@@ -27,10 +27,10 @@ export function FullScreenDialog() {
 
   return (
     <>
-    <Tooltip title="Tap to view full event history." arrow placement='top'>
-      <Button size="small" variant="outlined" color="success" onClick={dialog.onTrue}>
-        Attempt : 1
-      </Button>
+      <Tooltip title="Tap to view full event history." arrow placement='top'>
+        <Button size="small" variant="outlined" color="primary" onClick={dialog.onTrue}>
+          Attempt : 1
+        </Button>
       </Tooltip>
 
       <Drawer

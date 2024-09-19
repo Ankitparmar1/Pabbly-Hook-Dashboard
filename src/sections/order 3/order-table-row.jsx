@@ -57,7 +57,7 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               alignItems: 'flex-start',
             }}
           >
-            {/* Tooltip added around the Label component for all statuses */}
+
             <Tooltip
               title={
                 row.status === 'success'
@@ -82,34 +82,22 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
               >
                 {row.status}
               </Label>
-            </Tooltip>
-            <Box
-              component="span"
-              sx={{ color: 'text.disabled', fontSize: '12px', mt: 1, fontWeight: 400 }}
-            >
-            <Tooltip title="Events Date: Aug 8, 2024 15:25:33.366" arrow placement='top'>
-              Aug 8, 2024 15:25:33.366
-              </Tooltip>
-            </Box>
-          </Stack>
-        </Stack>
-      </TableCell>
 
-      <TableCell>
-        <Stack spacing={3} direction="row" alignItems="center">
-          <Stack
-            sx={{
-              typography: 'body2',
-              flex: '1 1 auto',
-              alignItems: 'flex-start',
-            }}
-          >
-            <Box fontSize={14} component="span">
-            <Tooltip title="Connection Name: Rajpal singh Tomar" arrow placement='top'>Rajpal singh Tomar</Tooltip></Box>
+            </Tooltip>
+            <Box sx={{ mt: 0.5, }} fontSize={14} component="span">
+              <Tooltip title="Connection Name: Rajpal singh Tomar" arrow placement='top'>Rajpal singh Tomar</Tooltip></Box>
             <Box
               component="span"
               sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
             />
+            <Box
+              component="span"
+              sx={{ color: 'text.disabled', fontSize: '12px', fontWeight: 400 }}
+            >
+              <Tooltip title="Events Date: Aug 8, 2024 15:25:33.366" arrow placement='top'>
+                Aug 8, 2024 15:25:33.366
+              </Tooltip>
+            </Box>
           </Stack>
         </Stack>
       </TableCell>
@@ -125,12 +113,14 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
           >
             {copyItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center' }}>
-              <Tooltip title="Request ID" arrow placement='top'>
-                <Typography fontSize={14} color="#1c252e">
-                  {item.label}
-                </Typography>
+
+                <Tooltip title="Request ID" arrow placement='top'>
+                  <Typography fontSize={14} color="#1c252e">
+                    {item.label}
+                  </Typography>
                 </Tooltip>
                 <Tooltip title="Copy request_id " arrow placement="bottom">
+
                   <IconButton
                     edge="end"
                     sx={{ color: 'text.disabled' }}
@@ -143,10 +133,10 @@ export function OrderTableRow({ row, selected, onViewRow, onSelectRow, onDeleteR
             ))}
             {evtItems.map((item) => (
               <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', mt: -0.3 }}>
-              <Tooltip title="Event ID" arrow placement='top'>
-                <Typography fontSize={12} color="#919eab">
-                  {item.label}
-                </Typography>
+                <Tooltip title="Event ID" arrow placement='top'>
+                  <Typography fontSize={12} color="#919eab">
+                    {item.label}
+                  </Typography>
                 </Tooltip>
                 <Tooltip title="Copy event_id" arrow placement="bottom">
                   <IconButton
