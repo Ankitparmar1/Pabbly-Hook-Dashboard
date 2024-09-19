@@ -405,7 +405,7 @@ export function OverviewEcommerceView() {
                    </DialogTitle>
 
                   <DialogContent>
-                    <Typography sx={{ mb: 0 }}>Folder Name</Typography>
+                    {/* <Typography sx={{ mb: 0 }}>Folder Name</Typography> */}
 
                     <TextField
                       autoFocus
@@ -414,7 +414,7 @@ export function OverviewEcommerceView() {
                       margin="dense"
                       variant="outlined"
                       placeholder='Name of the Connection'
-                      // label="Name of the Connection"
+                      label="Folder Name"
                       // defaultValue="Name of the Connection"
                       helperText={
                         <>
